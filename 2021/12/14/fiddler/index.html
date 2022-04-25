@@ -1,0 +1,1310 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Fiddler 入门, 宅世界">
+    <meta name="description" content="电脑环境丢失的一个多月，身体日渐憔悴，现在恢复了，抓紧更！">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8Z4B2QXXNF"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-8Z4B2QXXNF');
+</script>
+
+
+    <title>Fiddler 入门 | 宅世界</title>
+    <link rel="icon" type="image/png" href="../../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../../libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../css/matery.css">
+    <link rel="stylesheet" type="text/css" href="../../../../css/my.css">
+
+    <script src="../../../../libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+   <style>
+    body{
+       background-image: url(/medias/1.png);
+       background-repeat:no-repeat;
+       background-size: 100% 100%;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="../../../../index.html" class="waves-effect waves-light">
+                    
+                    <img src="../../../../medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">宅世界</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../Other/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-vial" style="zoom: 0.6;"></i>
+      
+      <span>Lab</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../https:/sekai.bingfengs.xyz:8443" class="waves-effect waves-light">
+      
+      <i class="fas fa-globe" style="zoom: 0.6;"></i>
+      
+      <span>Sekai</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="../../../../medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">宅世界</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../Other/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-vial"></i>
+			
+			Lab
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../https:/sekai.bingfengs.xyz:8443" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-globe"></i>
+			
+			Sekai
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('../../../../medias/featureimages/53.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Fiddler 入门</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="../../../../libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="../../../../tags/%E6%8A%93%E5%8C%85/">
+                                <span class="chip bg-color">抓包</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2021-12-14
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-02-19
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    5.4k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="../../../../libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>抓包的英文为：sniffer packet 或 packet capture。这篇文章介绍常用的两款软件：Wireshark 和 Fiddler。<br>这两者的主要区别是：</p>
+<ul>
+<li>Wireshark 可以捕捉三四层（TCP/IP)网络包，以及高层的 HTTP、HTTPS 协议（HTTPS 不能解密）。</li>
+<li>Fiddler 专注处理 HTTP 以及 HTTPS，主要用于 WEB 调试。</li>
+</ul>
+<p>本文先介绍 Fiddler，Wireshark 后面抽空再写一篇。另外文本介绍了 HTTP 协议的一些知识，这对了解 Fiddler 和抓包很有必要，请仔细阅读。</p>
+<h2 id="Fiddler"><a href="#Fiddler" class="headerlink" title="Fiddler"></a>Fiddler</h2><p>使用 Fiddler 需要有一些 HTTP 协议的基础。</p>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.telerik.com/fiddler/fiddler-classic">https://www.telerik.com/fiddler/fiddler-classic</a></p>
+</blockquote>
+<p>Fiddler 是商业软件，我们下载 <code>classic</code> 版本就行，这个是免费的。<br>Fiddler 是基于 C# 开发的。主要在 Windows 运行。目前的版本是 4。如果是其他系统，需要下载其他的 Fiddler 版本（收费）。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>你打开软件后，Fiddler 会自动添加一个系统代理，端口号为 8888。</p>
+<pre class="line-numbers language-none"><code class="language-none">http&#x3D;127.0.0.1:8888;https&#x3D;127.0.0.1:8888<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>下面两个都是同样</p>
+<p><img src="1.png"><br><img src="2.png"></p>
+<p>端口可以改的，位置如下：</p>
+<p><img src="3.png"></p>
+<p>这里有一个坑，如果你的电脑有翻墙的软件，请注意兼容问题。如果你的代理软件没有开启 <code>系统代理</code>, 但是在 Firefox 和 Chrome 下面都抓不到包的话，请检查你的浏览器设置</p>
+<ul>
+<li><p>Firefox</p>
+<p>  在网络设置里面，请选择 <code>No proxy</code></p>
+<p>  <img src="4.png"></p>
+</li>
+<li><p>Chrome</p>
+<p>  这种情况一般是安装了 <code>SwitchyOmega</code> 等代理插件造成的。请选择 <code>Direct</code> 解决问题</p>
+<p>  <img src="5.png"></p>
+<p>  或者直接开启无痕模式即可</p>
+</li>
+</ul>
+<h3 id="界面"><a href="#界面" class="headerlink" title="界面"></a>界面</h3><p><img src="6.png"></p>
+<ul>
+<li><p>主体的左边是捕获的 http 包。右边是一些工具，其中最常用的是 <code>Inspectors</code>，这个是包的查看器。在这个选项中，可以查看包的头部 Headers 或者直接 Raw 格式查看。右边这一块，分为上下两部分，分别对应 <code>请求报文</code> 和 <code>响应报文</code></p>
+</li>
+<li><p>左边 <code>Body</code> 这一列是 HTTP 响应中包含的字节数（byte）</p>
+</li>
+<li><p>如果右边报文里面出现乱码，请打开 <code>Decode</code> 按钮，然后重启软件<br>  <img src="7.png"></p>
+</li>
+<li><p>点击左下角的 <code>Capturing</code> 可以停止抓包<br>  <img src="8.png"></p>
+</li>
+</ul>
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><h4 id="捕捉-HTTPS-包"><a href="#捕捉-HTTPS-包" class="headerlink" title="捕捉 HTTPS 包"></a>捕捉 HTTPS 包</h4><p>HTTPS 是加密的，我们需要在系统安装 Fiddler 所提供的证书，来实现 HTTPS 解密。<br>关于为啥要安装证书，以及证书的作用及重要性，请自行 Google 查询。很多审计系统，比如深信服，同样需要在客户电脑安装证书之后才能解密 HTTPS，实现监控。</p>
+<p><img src="12.png"></p>
+<h4 id="修改-User-Agent"><a href="#修改-User-Agent" class="headerlink" title="修改 User-Agent"></a>修改 User-Agent</h4><p>Fiddler 可以帮我们修改 User-Agent，这样就能伪装成任何客户端。</p>
+<p><img src="16.png"></p>
+<h4 id="父请求和子请求"><a href="#父请求和子请求" class="headerlink" title="父请求和子请求"></a>父请求和子请求</h4><p>在一个网页中，打开一个网页的过程如下：</p>
+<ol>
+<li>在浏览器输入 URL。</li>
+<li>浏览器会发送第一个 HTTP 请求去获取页面布局的 HTML，这个请求叫做 <code>父请求</code>。然后服务器把 HTTP 响应发回给浏览器。</li>
+<li>浏览器会分析 HTTP 响应中的 HTML。如果发现 HTML 中引用了很多其他文件，比如图片、CSS 文件、JS 文件等，浏览器会自动再次发送很多 HTTP 请求，去获取图片、CSS 文件或者 JS 文件。这些 HTTP 请求叫做 <code>子请求</code>。</li>
+<li>当所有子请求的响应都返回后，浏览器会把 1 个父请求加上多个子请求渲染出来，这样就形成一个页面，网页就在浏览器上显示出来。</li>
+</ol>
+<p><img src="17.png"></p>
+<p>在这里可以筛选出相应的包</p>
+<h4 id="查看响应"><a href="#查看响应" class="headerlink" title="查看响应"></a>查看响应</h4><p>HTTP 响应可能是 HTML 文档，可能是一个图片，也可能是一个 JSON。使用 Raw 选项卡可以查看完整的 HTTP 响应，WebView 可以查看 HTML 文档，ImageView 可以查看图片，JSON 可以通过 JSON tab 来查看</p>
+<p><img src="18.png"></p>
+<h4 id="断点"><a href="#断点" class="headerlink" title="断点"></a>断点</h4><p>Fiddler 本身是一个代理服务器，其可以设置断点，拦截住 HTTP，修改之后再放行。</p>
+<ul>
+<li><p>全局断点<br>  这种方法会拦截所有的会话，位置如下：<code>Rules &gt; Automatic Breakpoint</code></p>
+<p>  <code>Before Requests</code>：修改 HTTP 请求<br>  <code>After Requests</code>： 修改 HTTP 响应</p>
+</li>
+<li><p>单个断点</p>
+</li>
+</ul>
+<p><img src="19.png"></p>
+<p>在软件左下角的 QuickExec 输入 <code>bpu URL</code>（如上图），这种方法只拦截你输入的 URL。要想消除单个断点，可以在命令行中输入 <code>bpu</code>。这种是修改 HTTP 请求</p>
+<p><code>bpafter URL</code> 则是修改 HTTP 响应。同样输入 <code>bpafter</code> 则是取消单个断点。</p>
+<h4 id="TextWizard"><a href="#TextWizard" class="headerlink" title="TextWizard"></a>TextWizard</h4><p>这是一个可以帮助你对字符进行 Encode 和 Decode 的小工具<br><code>Tools &gt; TextWizard</code></p>
+<h4 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h4><p><code>Ctrl + X</code> 删除所有 Session<br><code>Ctrl + A</code> 选择所有 Session<br><code>ESC</code> 不选择任何的 Session<br><code>Ctrl + I</code> 反选 Session<br><code>Delete</code> 删除选择的 Session<br><code>Shift + Delete</code> 删除未选择的 Session<br><code>R</code> 重放选择的 Session （可以多个）<br><code>Shift + R</code> 多次重放选择的 Session（可以重放多个 Session）<br><code>U</code> 无条件地重放选择的 Session（不会发送 If-Modified-Since 和 If-None-Match header）<br><code>Shift + U</code> 多次无条件重放<br><code>P</code> 选择 “当前 Session” 的 “父 Session” （这个功能取决于 Referer Header）<br><code>C</code> 选择 “当前 Session” 的 “子 Session”<br><code>D</code> 选择 “重复的 Session”（有相同 URL 和 method）<br><code>BackSpace 或鼠标上的 “back”</code> 选择 “上次选择的 Session”<br><code>M</code> 给选择的 Session 加注释<br><code>Alt + 鼠标左键</code> 选择相关联的多个 Session<br><code>Alt + Q</code>: 快速将焦点定位到 QuickExec 命令行<br><code>Ctrl + I</code>： 当选择了一个 session 的时候， 可以快速将此 session 的 URL 插入到当前命令行光标处</p>
+<h4 id="QuickExec"><a href="#QuickExec" class="headerlink" title="QuickExec"></a>QuickExec</h4><p>Fiddler 左下角有一个命令行工具，可以直接输入命令。常用的命令如下：</p>
+<ul>
+<li><code>help</code> 打开官方的使用页面介绍，所有命令都会列出来</li>
+<li><code>cls</code> 清屏，Ctrl + X 同样效果</li>
+<li><code>select</code> 选择会话的命令</li>
+<li><code>?.png</code> 用来选择 .png 后缀的图片</li>
+<li><code>bpu</code> 截获 request</li>
+<li><code>urlreplace www.test.com www.test-dev.com</code> 替换掉 host。（最初发送给 A 站点的 HTTP 请求，都被 Fiddler 转发到 B 站点，而在浏览器中毫无感觉，测试或者 debug 中经常有这种需求）</li>
+</ul>
+<p>具体命令请参考：<br><a target="_blank" rel="noopener" href="https://www.fiddlerbook.com/fiddler/help/quickexec.asp">https://www.fiddlerbook.com/fiddler/help/quickexec.asp</a></p>
+<h4 id="Fiddler-插件"><a href="#Fiddler-插件" class="headerlink" title="Fiddler 插件"></a>Fiddler 插件</h4><p>下载地址：<br><a target="_blank" rel="noopener" href="https://www.telerik.com/fiddler/add-ons">https://www.telerik.com/fiddler/add-ons</a></p>
+<ul>
+<li><p>JavaScript Formatter<br>格式化 JavaScript 代码</p>
+</li>
+<li><p>Gallery 插件<br>选择很多图片的会话后，Gallery 插件可以显示这些图片的缩略图</p>
+</li>
+</ul>
+<h4 id="AutoResponder"><a href="#AutoResponder" class="headerlink" title="AutoResponder"></a>AutoResponder</h4><p>Fiddler 可以替换自动返回的一个伪造的 HTTP 响应。跟下断点修改 HTTP 响应差不多，只不过 AutoResponder 是自动的。</p>
+<ol>
+<li><p>拖动左边的 Session 到 AutoResponder 中<br><img src="20.png"></p>
+</li>
+<li><p>然后我们选择 <code>Find a file...</code>，将其替换。</p>
+</li>
+</ol>
+<p><img src="21.png"></p>
+<ol start="3">
+<li><p>选中 <code>Enable rules</code>，激活规则。选中 <code>Unmatched requests passthrough</code>，放行不匹配的 HTTP 请求。单击 <code>Save</code></p>
+</li>
+<li><p>这样文件就会自动替换成我们选择的文件。</p>
+</li>
+</ol>
+<h4 id="手机抓包"><a href="#手机抓包" class="headerlink" title="手机抓包"></a>手机抓包</h4><p>Fiddler 可以捕获 iOS、Android 等远程设备的包。</p>
+<p>原理：安装 Fiddler 的电脑与手机设备处于同一个局域网。Fiddler 作为代理服务器。我们只需在手机指定 proxy server（fiddler 所在电脑的 IP 地址） 的地址即可。当然，如果你想查看加密的 HTTPS 流量，需要在手机设备安装 Fiddler 的证书。</p>
+<p>首先，我们需要打开 Fiddler 的设置</p>
+<p><img src="22.png"></p>
+<p>然后下载生成证书的插件，手机安装证书的操作自行 Google 吧</p>
+<p><img src="23.png"></p>
+<p>这里可以选择要捕获的设备</p>
+<p><img src="24.png"></p>
+<h4 id="Composer"><a href="#Composer" class="headerlink" title="Composer"></a>Composer</h4><p>这个组件可以用来发送 HTTP。</p>
+<p><img src="25.png"></p>
+<p>Composer 有两种编辑模式，<code>Parsed</code> 和 <code>Raw</code></p>
+<h3 id="局限"><a href="#局限" class="headerlink" title="局限"></a>局限</h3><p>可以抓取支付宝、淘宝等手机 APP 的信息, 不过有些手机走的是 <code>HTTP2</code> 协议，所以抓不到，这种情况就得用 wireshark 抓包了，不过抓取后，<code>解密是个问题</code>。</p>
+<ol>
+<li><p>Fiddler 并不支持全部协议，目前已知的有 <code>HTTP2</code>、<code>TCP</code>、<code>UDP</code>、<code>WebSocket</code> 等，如果应用走了这些协议，那么 iddler 肯定是抓不到的</p>
+</li>
+<li><p>证书写死在 APP 中，Fiddler 不能抓取。也就是说，APP 不信任 Fiddler 颁发的证书，而只信任自己的证书</p>
+</li>
+</ol>
+<h2 id="HTTP-协议"><a href="#HTTP-协议" class="headerlink" title="HTTP 协议"></a>HTTP 协议</h2><p>HTTP协议采用了请求/响应模型。客户端向服务器发送一个请求报文，请求报文包含请求的方法、URL、协议版本、请求头部和请求数据。服务器以一个状态行作为响应，响应的内容包括协议的版本、成功或者错误代码、服务器信息、响应头部和响应数据。</p>
+<p><strong>HTTP 协议采用请求/响应模型。客户端向服务器发送一个请求报文，服务器以一个状态作为响应。</strong></p>
+<h3 id="请求报文-Request"><a href="#请求报文-Request" class="headerlink" title="请求报文 Request"></a>请求报文 Request</h3><p><img src="9.png"></p>
+<p>一个 HTTP 请求报文由请求行（Request line）、请求头部（Header）、空行和请求数据 4 个部分组成</p>
+<ul>
+<li><p>Request line</p>
+<p>  报文第一行（示例中因为 URL 太长，导致了换行，其实只有一行）<br>  Post 表示请求方法（Method），常见的还有 Get。（具体参考本文的 [HTTP 请求方法])</p>
+<p>  请求方法后面接请求的 URL。 之后的 <code>HTTP/1.1</code> 表示使用的 HTTP 版本。</p>
+</li>
+<li><p>Header</p>
+<p>  Cookie 也是 Header 中的一部分</p>
+</li>
+<li><p>Body</p>
+<p>  报文的实体，这个部分在 Get 方法里面是没有的。<br>  <strong>在 Header 和 Body 之间需要空出一行。</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>首先声明，HTTP协议没有对传输的数据大小进行限制，HTTP协议规范也没有对URL长度进行限制。 而在实际开发中存在的限制主要有：<br>GET: 特定浏览器和服务器对URL长度有限制，例如IE对URL长度的限制是2083字节(2K+35)。对于其他浏览器，如Netscape、FireFox等，理论上没有长度限制，其限制取决于操作系统的支持。<br>POST: 由于不是通过URL传值，理论上数据不受限。但实际各个WEB服务器会规定对post提交数据大小进行限制，Apache、IIS6都有各自的配置。</p>
+</blockquote>
+<h4 id="HTTP-请求方法"><a href="#HTTP-请求方法" class="headerlink" title="HTTP 请求方法"></a>HTTP 请求方法</h4><p>常见的有：<code>GET | POST | PUT | DELETE</code>。可以理解为：对某个资源分别进行 <code>查 | 改 | 增 | 删</code> 四个操作。参见的 GET 和 POST</p>
+<p>还有一个 <code>HEAD</code>，类似于 GET 请求，只不过服务器返回的响应中没有具体的内容，用于获取报头。</p>
+<ul>
+<li><p>GET</p>
+<p>  是最常见的方法，用于获取资源，常用于向服务器查询某些信息。</p>
+<p>  带参数的 Get:<br>  浏览器可以在 GET 方法中把数据传送给服务器，如下</p>
+<p>  问号后面是数据，这种叫做<code>查询字符串（Query String)</code><br>  查询字符串以 <code>名=值</code> 这样的形势出现，多个名值之间用字符 <code>&amp;</code> 隔开。这种方式不适合传送私密数据。另外，由于不同的浏览器对地址的字符限制也有所不同，一般最多只能识别1024个字符，所以如果需要传送大量数据的时候，也不适合使用GET方式。</p>
+<p>  <img src="10.png"></p>
+</li>
+<li><p>POST</p>
+<p>  POST 允许客户端给服务器提供更多的信息。</p>
+<p>  <img src="11.png"></p>
+<p>  图中红框部分即为 POST 的内容，同样也是 <code>名=值</code> 这样的形势出现，多个名值之间用字符 <code>&amp;</code> 隔开。</p>
+</li>
+<li><p>PUT</p>
+<p>  从客户端向服务器传送的数据取代指定文档的内容</p>
+</li>
+<li><p>DELETE</p>
+<p>  请求服务器删除指定的页面</p>
+</li>
+</ul>
+<h3 id="响应报文-Response"><a href="#响应报文-Response" class="headerlink" title="响应报文 Response"></a>响应报文 Response</h3><p><img src="13.png"></p>
+<p>响应报文由响应行（Response line）、响应首部（Response header）、空行、主体（Body）组成</p>
+<p>同样，<strong>在 Header 和 Body 之间需要空出一行。</strong></p>
+<ul>
+<li><p>Response line<br>  第一行，由 HTTP 协议版本号、状态码、状态消息 3 部分组成。如下：</p>
+  <pre class="line-numbers language-none"><code class="language-none">HTTP&#x2F;1.1 200 OK<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<h4 id="HTTP-状态码"><a href="#HTTP-状态码" class="headerlink" title="HTTP 状态码"></a>HTTP 状态码</h4><p>状态码用来告诉 HTTP 客户端， web 服务器是否产生了什么响应</p>
+<p>分 5 大类</p>
+<ul>
+<li><p>1XX</p>
+<p>  100 ~ 101<br>  信息提示，表示请求已被成功接收，继续处理</p>
+</li>
+<li><p>2XX</p>
+<p>  200 ~ 206<br>  成功</p>
+<p>  200（OK）<br>  最常见的，成功响应的状态码</p>
+<p>  204（No Content，没有内容）<br>  返回的 HTTP 响应只有一个状态行和 一些 Header，没有实体内容（Body）<br>  作用如下：</p>
+<ul>
+<li><p>在不获取资源的情况下了解资源的情况，比如判断其类型</p>
+</li>
+<li><p>查看某个对象是否存在</p>
+</li>
+<li><p>测试资源是否被更改</p>
+<p>206（Partial Content，部分内容）<br>服务器已经成功处理了部分 GET 请求<br>作用如下：</p>
+</li>
+<li><p>迅雷或者 HTTP 下载工具都是使用 206 状态码来实现断点续传的</p>
+</li>
+<li><p>将一个大文档分解为多个下载段同时下载，比如在线看视频<br><img src="14.png"></p>
+</li>
+</ul>
+</li>
+<li><p>3XX</p>
+<p>  300 ~ 305<br>  重定向。要完成请求，必须进行更进一步的处理</p>
+<p>  301（Moved Permanently)<br>  表示请求的网页已经永久性地转移到另一个地址<br>  作用如下：</p>
+<ul>
+<li><p>防止用户输错域名。比如 Goolge 担心用户输错域名，就把其他类似的域名买下来，比如 go0gle.com，然后重定向到 <code>www.google.com</code>。</p>
+</li>
+<li><p>网站更换域名。一些网站壮大后，会换个更好的域名。比如京东以前的域名是 <code>www.360buy.com</code>，现在的域名是 <code>www.jd.com</code>。</p>
+</li>
+<li><p>有多个权重不错的域名，需要把所有的权重都传递到新域名上，这就需要 301 重定向了。**如果不设置 301，多个域名绑定在一个主机头上，会被搜索引擎认为是两个相同的站点，不利于网站的排名。绑定的域名越多，内容重复度也就越高，排名越低。</p>
+<p>302（Found）<br>当我们访问一个 URL 的时候，服务器要我们访问另一个资源，这时候浏览器会继续发一个 HTTP，请求访问<code>新的资源</code>。比如：有些需要登陆才能查看的页面，我们会被服务器返回 302，跳转到登录页面。</p>
+<p>301 和 302 区别：两者语法上是一摸一样的，都是在 Location 中返回新的 URL。具体区别在：</p>
+</li>
+<li><p>301 表示旧地址的资源已经被<code>永久移除了</code>（这个资源不可访问了），搜索引擎会把权重算到新的地址；</p>
+</li>
+<li><p>302 表示旧地址的资源还在（仍然可以访问），这个重定向只是临时从旧地址跳转到新地址。</p>
+<p>304（Not Modified）<br>表示上次的文档已经缓存了，还可以继续使用。304 的响应是没有 Body 的</p>
+</li>
+</ul>
+</li>
+<li><p>4XX</p>
+<p>  400 ~ 415<br>  客户端错误，请求有语法错误或请求无法实现</p>
+<p>  400（Bad Request）<br>  表示客户端请求有语法错误（如表单错误、Cookie 错误），不能被服务器所理解。</p>
+<p>  401（Unauthorized）<br>  未授权错误。有些网页采用的是 HTTP 基本认证（Basic Authentication），需要在 HTTP 请求上带上 Authorization Header，否则服务器会返回状态码 401。</p>
+<p>  403（Forbidden）<br>  表示 Web 客户端发送的请求被 Web 服务器拒绝了。如果服务器想说明为什么拒绝请求，可以在 Body 中描述原因。<strong>但是这个状态码通常表示服务器不想说明拒绝原因</strong></p>
+<p>  404（Not Found）<br>  当你访问一个 URL，这个 URL 的域名是正确的，但是定位的资源不存在，服务器就会返回 404，告诉浏览器资源不存在（意味 URL 输入错误）</p>
+</li>
+<li><p>5XX</p>
+<p>  500 ~ 505<br>  服务器错误，服务器未能实现合法的请求</p>
+<p>  500（Internal Server Error）<br>  服务器内部错误。原因很多，比如代码错误、数据库连接语句出错、程序内部抛出异常、空指针错误等。</p>
+<p>  503（Server Unavailable）<br>  表示服务器暂时不可用。由于服务器维护或过载，服务器当前无法处理请求。这个状况是临时的，并且将在一段时间后恢复。</p>
+</li>
+</ul>
+<h3 id="HTTP-版本"><a href="#HTTP-版本" class="headerlink" title="HTTP 版本"></a>HTTP 版本</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903923136856078">https://juejin.cn/post/6844903923136856078</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/52d86558ca57">https://www.jianshu.com/p/52d86558ca57</a></p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">HTTP 0.9 -&gt; HTTP 1.0 -&gt; HTTP 1.1 -&gt; HTTP 2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>HTTP 1.1 是在 1.0 发布之后的半年就推出了，完善了 1.0 版本。目前也还有很多的互联网项目基于 HTTP 1.1 在向外提供服务。</p>
+<blockquote>
+<p>虽然在2015年，HTTP 2 就发布了，但是目前互联网的服务中，使用 HTTP 1.x 版本的服务不在少数，其中可能很大的一个原因是在当前的主流浏览器比如 chrome、Firefox 它们只支持基于 TLS 部署的 HTTP 2 协议，也就是说需要你的网站先升级为 HTTPS 才可以。然而 HTTPS 是需要申请证书的。<br>当然如果你的网站已经升级过 HTTPS 了，那么想升级 HTTP 2 就非常容易了。</p>
+</blockquote>
+<h3 id="HTTP-Content-type"><a href="#HTTP-Content-type" class="headerlink" title="HTTP Content-type"></a>HTTP Content-type</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://tool.oschina.net/commons">https://tool.oschina.net/commons</a></p>
+</blockquote>
+<p>链接记录了各种文件后缀在 HTTP 里的表达。如：</p>
+<table>
+<thead>
+<tr>
+<th>后缀</th>
+<th>表示</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.html</td>
+<td>text/html</td>
+</tr>
+<tr>
+<td>.mp3</td>
+<td>audio/mp3</td>
+</tr>
+<tr>
+<td>.pdf</td>
+<td>application/pdf</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="Header"><a href="#Header" class="headerlink" title="Header"></a>Header</h3><p><img src="15.png"></p>
+<p>上图框选的都是 Header</p>
+<p>HTTP 请求和 HTTP 响应中都有很多用于缓存的 Header。HTTP 缓存是指当 Web 请求抵达缓存时，如果本地有“已缓存的”副本，就可以从本地存储设备而不是原始服务器中提取这个文档。</p>
+<ul>
+<li><p>Cookies  </p>
+</li>
+<li><p>*Cookie 是一种 HTTP Header**。 它由 key = value 的形式组成。有多个 key value 值，用 <code>;</code> 分隔。<br>浏览器把 Cookie 通过 HTTP 请求中的 “Cookie：头部内容” 发送给 Web 服务器，Web 服务器通过 HTTP 响应中的 “Set-Cookie：头部内容” 把 Cookie 发送给浏览器。</p>
+</li>
+<li><p>Accept<br>表示浏览器客户端可以接受的媒体类型。<br>例如：<code>Accept：text/html</code> 代表浏览器可以接受服务器返回 html。<br>通配符 <code>*</code> 代表任意类型，例如： <code>Accept: text/html,*/*;q=0.8</code> 代表浏览器可以处理所有的类型。一般浏览器客户端给 Web 服务器发送的都是这个。</p>
+</li>
+<li><p>Accept-Encoding<br>这个跟压缩有关，告诉服务器，浏览器所支持的压缩类型</p>
+</li>
+<li><p>Accept-Language<br>浏览器声明自己接受的语言。如下：<br><code>Accept-Language: en-US;q=0.8,zh-CN;q=0.6,zh;q=0.4,zh-TW;q=0.2</code></p>
+</li>
+<li><p>User-Agent<br>作用时浏览器用来告诉服务器，客户端使用的操作系统及版本、cpu 类型、浏览器及版本、浏览器的渲染引擎、浏览器的语言、浏览器插件等。</p>
+</li>
+<li><p>Referer<br>主要让服务器判断来源页面，即用户是从哪个页面来的。网站通常用其来统计用户来源，看用户是从搜索页面来的，还是其他网站链接过来的，或是从书签等访问的。<br>有时也被用作防盗链，即下载时判断来源地址是不是在网站域名之内，否则就不能下载或显示。</p>
+</li>
+<li><p>Connection<br>从 HTTP/1.1 起，系统默认都开启了 <code>Connection：Keep-Alive</code>，保持连接特性。它有一个保持时间，可以在不同的服务器软件中设定这个时间。</p>
+</li>
+<li><p>Host<br>这个 Header 是必须的，它的作用是指定被请求的主机和端口号，它通常从 HTTP URL 中提取出来。</p>
+</li>
+<li><p>缓存有关的 Header</p>
+<ul>
+<li><p>HTTP 请求相关<br><code>Cahce-Control: max-age=0</code>：以秒为单位<br><code>If-Modified-Since: Mon,19 Nov 2012 08:38:01 GMT</code>：缓存文件的最后修改时间<br><code>If-None-Match: &quot;0693f67a67cc1:0&quot;</code>：缓存文件的 Etag 值<br><code>Cache-Control：no-cache</code>：不使用缓存<br><code>Pragma: no-cache</code>：不使用缓存</p>
+</li>
+<li><p>HTTP 响应相关<br><code>Cache-Control: public</code>：响应被缓存，并且在多用户间共享<br><code>Cache-Control: private</code>：响应只能作为私有缓存，不能再用户之间共享<br><code>Cache-Control: no-cache</code>：提醒浏览器要从服务器提取文档进行验证<br><code>Cache-Control: no-store</code>：绝对禁止缓存（用于机密，敏感文件）<br><code>Cache-Control: max-age=60</code>：60s 之后缓存过期（相对时间）<br><code>Date: Mon, 19 Nov 2021 80:39:00 GMT</code>：当前响应发送的时间<br><code>Expires: Mon, 19 Nov 2021 08:40:01 GMT</code>：缓存过期的时间（绝对时间）<br><code>Last-Modified: Mon, 19 Nov 2012 08:38:01 GMT</code>：服务器端文件的最后修改时间<br><code>ETag: &quot;20b1add7ec1cd1:0&quot;</code>：服务器端文件的 ETag 值<br><strong>浏览器优先使用 cache-control，之后才是 Expires</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="HTTP-压缩"><a href="#HTTP-压缩" class="headerlink" title="HTTP 压缩"></a>HTTP 压缩</h3><p>HTTP 采用通用的压缩算法，比如用 gzip 来压缩 HTML、JavaScript、CSS 文件，能大大减少网络传输的数据量，提高了用户显示网页的速度。但是会增加服务器的开销。<br>压缩的过程：</p>
+<ol>
+<li>浏览器发送 HTTP 请求给 Web服务器，请求中的 Header: <code>Accept-Encoding: gzip, deflate</code>。（告诉服务器，浏览器支持 gzip 压缩）</li>
+<li>Web 服务器接到 HTTP 请求后，生产原始的 HTTP 响应，其中有原始的 Content-Type 和 Content-Length。</li>
+<li>Web 服务器通过 gzip 来对 HTTP 响应进行编码，编码后 Header 中有 Content-Type 和 Content-Lenght（压缩后的大小），并且增加了    <code>Content-Encoding: gzip</code>，然后把 HTTP 响应发送个浏览器。</li>
+<li>浏览器接收到 HTTP 响应后，根据 Content-Encoding: gzip 来对 HTTP 响应进行解码，获取到原始 HTTP 响应后显示出网页。</li>
+</ol>
+<p>可以使用的编码有：</p>
+<ul>
+<li>gzip，实体采用 GNU zip 编码</li>
+<li>compress， 实体采用 UNIX 的文件压缩程序</li>
+<li>deflate，采用 zlib 的格式压缩的</li>
+<li>identity，表示没有对实体进行编码；当没有 Content-Encoding header 时，默认就是这种情况。</li>
+</ul>
+<h3 id="URL-Encode"><a href="#URL-Encode" class="headerlink" title="URL Encode"></a>URL Encode</h3><p>URL 编码就是把所有非英文字幕、数字字符都替换成百分号后加两位十六进制数，如空格的编码为 <code>%20</code>。</p>
+<h3 id="HTTP-认证"><a href="#HTTP-认证" class="headerlink" title="HTTP 认证"></a>HTTP 认证</h3><ul>
+<li><p>基本认证<br>一些网站和 Web 服务使用的是 HTTP 基本认证。有些桌面应用程序也通过 HTTP 协议 跟 Web 服务器交互，桌面应用程序一般不会使用 Cookie，而是把 “用户名 + 冒号 + 密码” 用 Base64 编码放在 HTTP 请求中的 Header <code>Authorization</code> 中发送给服务端，这种方法叫 HTTP 基本认证（Basic Authentication）  </p>
+<p>  缺点:</p>
+<ul>
+<li>HTTP 协议是无状态的，同一个客户端对服务器的每个请求都需要认证。</li>
+<li>Base64 是一种可逆编码，非常容易破解</li>
+<li>使用基本认证登录后，除非关闭浏览器或清除历史记录，否则将无法登出</li>
+<li>无法防止重放攻击。</li>
+</ul>
+</li>
+<li><p>摘要认证</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaohuochai/p/6189065.html">https://www.cnblogs.com/xiaohuochai/p/6189065.html</a></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a2c4ede32d11">https://www.jianshu.com/p/a2c4ede32d11</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/141205398">https://zhuanlan.zhihu.com/p/141205398</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/biyeymyhjob/archive/2012/07/28/2612910.html">https://www.cnblogs.com/biyeymyhjob/archive/2012/07/28/2612910.html</a></p>
+</blockquote>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="../../../../about" rel="external nofollow noreferrer">ROOT</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz">https://blog.bingfengs.xyz</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="../../../../about" target="_blank">ROOT</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="../../../../tags/%E6%8A%93%E5%8C%85/">
+                                    <span class="chip bg-color">抓包</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="../../../../libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="../../../../libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+        <div class="disqus-card card" data-aos="fade-up">
+    <div id="disqus_thread" class="card-content">
+        <noscript>Please enable JavaScript to view the
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+    </div>
+</div>
+
+<script type="text/javascript">
+    disqus_config = function () {
+        this.page.url = 'https://blog.bingfengs.xyz/2021/12/14/fiddler/';
+        this.page.identifier = '';
+        this.page.title = 'Fiddler 入门';
+    };
+    let disqus_shortname = 'bingfeng';
+
+    (function () { // DON'T EDIT BELOW THIS LINE
+        let d = document, s = d.createElement('script');
+        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="../ipv6/">
+                    <div class="card-image">
+                        
+                        <img src="../../../../medias/featureimages/54.jpg" class="responsive-img" alt="IPv6 基础">
+                        
+                        <span class="card-title">IPv6 基础</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            对一本书的总结，挑取里面重点做记录，其他没什么用！
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">网络</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="../../../07/28/build-a-mysql-of-docker-env/">
+                    <div class="card-image">
+                        
+                        <img src="../../../../medias/featureimages/50.jpg" class="responsive-img" alt="Build a mysql of docker env">
+                        
+                        <span class="card-title">Build a mysql of docker env</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            有段时间没更新了，水一贴先
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="../../../../tags/Docker/">
+                        <span class="chip bg-color">Docker</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="../../../../libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="../../../../libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            |&nbsp;Administrated by&nbsp;
+            <a href="../../../../about" target="_blank">ROOT</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+                <span id="icp"><img src="../../../../medias/icp.png"
+                                    style="vertical-align: text-bottom;"/>
+                <a href="../../../../https:/sekai.bingfengs.xyz:8443" target="_blank">备案，不存在的！</a>
+            </span>
+            
+            <br>
+            <br>
+            <span>苔痕上階綠，草色入簾青。談笑有鴻儒，往來無白丁。<br>
+                可以調素琴，閱金經。無絲竹之亂耳，無案牘之勞形。</span>
+            <br>
+            <br>
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('../../../../search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="../../../../libs/materialize/materialize.min.js"></script>
+    <script src="../../../../libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="../../../../libs/aos/aos.js"></script>
+    <script src="../../../../libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="../../../../libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="../../../../js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="../../../../libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="../../../../libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="../../../../libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="../../../../libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

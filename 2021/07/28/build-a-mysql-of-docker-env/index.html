@@ -1,0 +1,1117 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Build a mysql of docker env, 宅世界">
+    <meta name="description" content="有段时间没更新了，水一贴先">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8Z4B2QXXNF"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-8Z4B2QXXNF');
+</script>
+
+
+    <title>Build a mysql of docker env | 宅世界</title>
+    <link rel="icon" type="image/png" href="../../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../../libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../css/matery.css">
+    <link rel="stylesheet" type="text/css" href="../../../../css/my.css">
+
+    <script src="../../../../libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+   <style>
+    body{
+       background-image: url(/medias/1.png);
+       background-repeat:no-repeat;
+       background-size: 100% 100%;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="../../../../index.html" class="waves-effect waves-light">
+                    
+                    <img src="../../../../medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">宅世界</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../Other/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-vial" style="zoom: 0.6;"></i>
+      
+      <span>Lab</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../https:/sekai.bingfengs.xyz:8443" class="waves-effect waves-light">
+      
+      <i class="fas fa-globe" style="zoom: 0.6;"></i>
+      
+      <span>Sekai</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="../../../../medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">宅世界</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../Other/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-vial"></i>
+			
+			Lab
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../https:/sekai.bingfengs.xyz:8443" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-globe"></i>
+			
+			Sekai
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('../../../../medias/featureimages/50.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Build a mysql of docker env</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="../../../../libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="../../../../tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                            <a href="../../../../tags/Docker/">
+                                <span class="chip bg-color">Docker</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2021-07-28
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-04-22
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    1.3k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="../../../../libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h2><p>这里我用虚拟机里的 Debian 系统演示，这里我没有安装 Sudo<br>更加详细的信息可以参考官方的说明</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/debian/">https://docs.docker.com/engine/install/debian/</a></p>
+</blockquote>
+<ul>
+<li><p>升级<br>  <code>apt update </code></p>
+</li>
+<li><p>安装必要软件<br>  <code>apt-get install apt-transport-https ca-certificates curl gnupg lsb-release</code></p>
+</li>
+<li><p>添加官方 GPG Key（后面的 –socks5 是指定代理，视自己网络环境添加）<br>  <code>curl -fsSL https://download.docker.com/linux/debian/gpg --socks5 192.168.100.133:23333 |  gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg</code></p>
+</li>
+<li><p>添加官方 docker 安装源</p>
+  <pre class="line-numbers language-none"><code class="language-none">echo \
+&quot;deb [arch&#x3D;amd64 signed-by&#x3D;&#x2F;usr&#x2F;share&#x2F;keyrings&#x2F;docker-archive-keyring.gpg] https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;debian \
+$(lsb_release -cs) stable&quot; | tee &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;docker.list &gt; &#x2F;dev&#x2F;null<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li><p>再次 update<br>  <code>apt update</code></p>
+</li>
+<li><p>安装（如果安装过程缓慢，请参考下面的 proxychains 解决方案，或换个时间段再试试）<br>  <code>apt install docker-ce docker-ce-cli containerd.io</code></p>
+</li>
+<li><p>验证安装<br>  <code>docker -v</code></p>
+</li>
+</ul>
+<h2 id="添加-MySQL"><a href="#添加-MySQL" class="headerlink" title="添加 MySQL"></a>添加 MySQL</h2><ul>
+<li><p>查找 MySQL<br>  <code>docker search mysql</code></p>
+</li>
+<li><p>下载官方最新的镜像<br>  <code>docker pull mysql:latest</code></p>
+</li>
+<li><p>查看本地镜像<br>  <code>docker images</code></p>
+</li>
+<li><p>运行 MySQL 容器</p>
+  <pre class="line-numbers language-none"><code class="language-none">docker run -d --name mysql-test -p 3307:3306 -e MYSQL_ROOT_PASSWORD&#x3D;123456 -v &#x2F;mydocker&#x2F;mysql&#x2F;conf:&#x2F;etc&#x2F;mysql&#x2F;conf.d -v &#x2F;mydocker&#x2F;mysql&#x2F;logs:&#x2F;var&#x2F;log&#x2F;mysql -v &#x2F;mydocker&#x2F;mysql&#x2F;data:&#x2F;var&#x2F;lib&#x2F;mysql mysql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>  <code>-d</code>: 后台运行<br>  -p 3307:3306：将主机的 3307 端口映射到 docker 容器的 3306 端口(<code>第一个是主机端口号，第二个是容器端口号</code>)<br>  <code>--name mysql</code>：运行服务名字<br>  <code>-v /mydocker/mysql/conf:/etc/mysql/conf.d</code>：将主机/mydocker/mysql录下的conf/my.cnf 挂载到容器的 /etc/mysql/conf.d<br>  <code>-v /mydocker/mysql/logs:/var/log/mysql</code>：将主机/mydocker/mysql目录下的 logs 目录挂载到容器的 /logs。<br>  <code>-v /mydocker/mysql/data:/var/lib/mysql</code> ：将主机/mydocker/mysql目录下的data目录挂载到容器的 /var/lib/mysql<br>  <code>-e MYSQL_ROOT_PASSWORD=123456</code>：初始化 root 用户的密码<br>  <code>--character-set-server=utf8mb4</code> ：设置字符集<br>  <code>--collation-server=utf8mb4_unicode_ci</code>：设置校对集</p>
+</li>
+<li><p>进入 MySQL 终端</p>
+<p>  <code>docker exec -it  529a4d9afd8e /bin/bash</code></p>
+<p>  <img src="3.png"></p>
+<p>  <code>-it</code>：启动交互界面<br>  529a4d9afd8e：可以是 ID 或是容器名称</p>
+</li>
+<li><p>开始使用 MySQL<br>  <code>mysql -u root -p12345</code></p>
+<p>  <img src="2.png"></p>
+<p>  你没看错，<code>-p</code> 参数和密码是连在一起的。如果你分开输入，会要求你再输入一次密码</p>
+<p>  <img src="1.png"></p>
+</li>
+</ul>
+<h2 id="Docker-一些基本操作"><a href="#Docker-一些基本操作" class="headerlink" title="Docker 一些基本操作"></a>Docker 一些基本操作</h2><ul>
+<li><p>查看运行的容器<br>  <code>docker ps</code></p>
+</li>
+<li><p>停止容器<br>  <code>docker stop 容器id</code></p>
+</li>
+<li><p>强制停止容器<br>  <code>docker kill 容器id</code></p>
+</li>
+<li><p>删除容器<br>  <code>docker rm -f 容器ID</code></p>
+</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="添加代理"><a href="#添加代理" class="headerlink" title="添加代理"></a>添加代理</h3><ul>
+<li><p>不生效的方法：</p>
+<p>  原因：&gt;<a target="_blank" rel="noopener" href="https://www.serverlab.ca/tutorials/linux/administration-linux/how-to-set-the-proxy-for-apt-for-ubuntu-18-04/">https://www.serverlab.ca/tutorials/linux/administration-linux/how-to-set-the-proxy-for-apt-for-ubuntu-18-04/</a></p>
+<p>  <font color=purple size=5>Aptitude will not use the HTTP Proxy environment variables</font></p>
+</li>
+</ul>
+<ul>
+<li><p>推荐的方法<br>  使用 proxychains</p>
+<ol>
+<li><p>安装编译环境<br> <code>apt-get install build-essential</code></p>
+</li>
+<li><p>克隆代码<br> <code>git clone git@github.com:rofl0r/proxychains-ng.git</code><br> <code>cd proxychains-ng</code></p>
+</li>
+<li><p>编译</p>
+ <pre class="line-numbers language-none"><code class="language-none">sudo make
+sudo make install
+sudo make install-config<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li><p>找到配置文件，复制到 etc 目录下面<br> <code>cp ./src/proxychains.conf /etc/proxychians.conf</code></p>
+</li>
+<li><p>修改配置<br> 注释 strict_chain<br> 添加 一行配置 <code>socks5 192.168.1.1 1080</code></p>
+</li>
+<li><p>测试，能看到输出结果就是通了<br> <code>proxychains4 -f /etc/proxychians.conf  curl -v google.com</code></p>
+</li>
+</ol>
+</li>
+<li><p>验证代理<br>  执行如下命令，能返回你的 IP</p>
+  <pre class="line-numbers language-none"><code class="language-none">curl cip.cc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<h3 id="VIM-操作"><a href="#VIM-操作" class="headerlink" title="VIM 操作"></a>VIM 操作</h3><pre class="line-numbers language-none"><code class="language-none">1. 选定文本块。使用v进入可视模式，移动光标键选定内容。
+
+2.复制的命令是y，即yank（提起） ，常用的命令如下：
+    y    在使用v模式选定了某一块的时候，复制选定块到缓冲区用；
+    yy   复制整行（nyy或者yny ，复制n行，n为数字）；
+    y^   复制当前到行头的内容；
+    y$   复制当前到行尾的内容；
+    yw   复制一个word （nyw或者ynw，复制n个word，n为数字）；
+    yG   复制至档尾（nyG或者ynG，复制到第n行，例如1yG或者y1G，复制到档尾） 
+   
+3. 剪切的命令是d，即delete，d与y命令基本类似，所以两个命令用法一样，包括含有数字的用法. 
+    d     剪切选定块到缓冲区；
+    dd    剪切整行
+    d^    剪切至行首
+    d$    剪切至行尾
+    dw    剪切一个word
+    dG    剪切至档尾 
+   
+4. 粘贴的命令式p，即put（放下）
+    p     小写p代表贴至游标后（下），因为游标是在具体字符的位置上，所以实际是在该字符的后面
+    P     大写P代表贴至游标前（上），整行的复制粘贴在游标的上（下）一行，非整行的复制则是粘贴在游标的前（后）
+
+注：
+     在正则表达式中，^表示匹配字符串的开始位置，$表示匹配字符串的结束位置。
+     命令前面加数字表示重复的次数，加字母表示使用的缓冲区名称。使用英文句号&quot;.&quot;可以重复上一个命令。
+     在复制粘贴时，另一组常用的命令是u（撤销操作），U（撤销某一行最近所有修改），Ctrl+R（重做），这些功能主要是vim中的，vi中略有差别
+————————————————
+原文链接：https:&#x2F;&#x2F;blog.csdn.net&#x2F;lanxinju&#x2F;article&#x2F;details&#x2F;5727262<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="curl-使用方法"><a href="#curl-使用方法" class="headerlink" title="curl 使用方法"></a>curl 使用方法</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/fc0eb6c60816">https://www.jianshu.com/p/fc0eb6c60816</a><br><a target="_blank" rel="noopener" href="https://itbilu.com/linux/man/4yZ9qH_7X.html">https://itbilu.com/linux/man/4yZ9qH_7X.html</a></p>
+</blockquote>
+<ul>
+<li><p>verbose 模式，显示详细的连接信息<br>   <code>curl -v www.baidu.com</code></p>
+</li>
+<li><p>保存网页<br>  <code>curl -o [文件名] google.com</code></p>
+</li>
+<li><p>代理<br>  <code>--socks5 192.168.100.133:23333</code></p>
+</li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/J080624/article/details/104297654">https://blog.csdn.net/J080624/article/details/104297654</a><br><a target="_blank" rel="noopener" href="https://www.runoob.com/docker/docker-install-mysql.html">https://www.runoob.com/docker/docker-install-mysql.html</a></p>
+</blockquote>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="../../../../about" rel="external nofollow noreferrer">ROOT</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz">https://blog.bingfengs.xyz</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="../../../../about" target="_blank">ROOT</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="../../../../tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="../../../../tags/Docker/">
+                                    <span class="chip bg-color">Docker</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="../../../../libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="../../../../libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+        <div class="disqus-card card" data-aos="fade-up">
+    <div id="disqus_thread" class="card-content">
+        <noscript>Please enable JavaScript to view the
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+    </div>
+</div>
+
+<script type="text/javascript">
+    disqus_config = function () {
+        this.page.url = 'https://blog.bingfengs.xyz/2021/07/28/build-a-mysql-of-docker-env/';
+        this.page.identifier = '';
+        this.page.title = 'Build a mysql of docker env';
+    };
+    let disqus_shortname = 'bingfeng';
+
+    (function () { // DON'T EDIT BELOW THIS LINE
+        let d = document, s = d.createElement('script');
+        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="../../../12/14/fiddler/">
+                    <div class="card-image">
+                        
+                        <img src="../../../../medias/featureimages/53.jpg" class="responsive-img" alt="Fiddler 入门">
+                        
+                        <span class="card-title">Fiddler 入门</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            电脑环境丢失的一个多月，身体日渐憔悴，现在恢复了，抓紧更！
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/%E6%8A%93%E5%8C%85/">
+                        <span class="chip bg-color">抓包</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="../../../05/22/ji-zhui-de-yi-xie-shi/">
+                    <div class="card-image">
+                        
+                        <img src="../../../../medias/featureimages/52.jpg" class="responsive-img" alt="脊椎的一些事">
+                        
+                        <span class="card-title">脊椎的一些事</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            坐久了，20几的年纪，40几的老腰，就有了这次的文章
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/%E5%85%BB%E7%94%9F/">
+                        <span class="chip bg-color">养生</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="../../../../libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="../../../../libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            |&nbsp;Administrated by&nbsp;
+            <a href="../../../../about" target="_blank">ROOT</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+                <span id="icp"><img src="../../../../medias/icp.png"
+                                    style="vertical-align: text-bottom;"/>
+                <a href="../../../../https:/sekai.bingfengs.xyz:8443" target="_blank">备案，不存在的！</a>
+            </span>
+            
+            <br>
+            <br>
+            <span>苔痕上階綠，草色入簾青。談笑有鴻儒，往來無白丁。<br>
+                可以調素琴，閱金經。無絲竹之亂耳，無案牘之勞形。</span>
+            <br>
+            <br>
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('../../../../search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="../../../../libs/materialize/materialize.min.js"></script>
+    <script src="../../../../libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="../../../../libs/aos/aos.js"></script>
+    <script src="../../../../libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="../../../../libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="../../../../js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="../../../../libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="../../../../libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="../../../../libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="../../../../libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

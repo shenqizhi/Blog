@@ -1,0 +1,1508 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Selenium, 宅世界">
+    <meta name="description" content="Selenium 的简单介绍，基于 Python">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8Z4B2QXXNF"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-8Z4B2QXXNF');
+</script>
+
+
+    <title>Selenium | 宅世界</title>
+    <link rel="icon" type="image/png" href="../../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../../libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../css/matery.css">
+    <link rel="stylesheet" type="text/css" href="../../../../css/my.css">
+
+    <script src="../../../../libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+   <style>
+    body{
+       background-image: url(/medias/1.png);
+       background-repeat:no-repeat;
+       background-size: 100% 100%;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="../../../../index.html" class="waves-effect waves-light">
+                    
+                    <img src="../../../../medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">宅世界</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../Other/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-vial" style="zoom: 0.6;"></i>
+      
+      <span>Lab</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../https:/sekai.bingfengs.xyz:8443" class="waves-effect waves-light">
+      
+      <i class="fas fa-globe" style="zoom: 0.6;"></i>
+      
+      <span>Sekai</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="../../../../medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">宅世界</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../Other/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-vial"></i>
+			
+			Lab
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../https:/sekai.bingfengs.xyz:8443" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-globe"></i>
+			
+			Sekai
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('../../../../medias/featureimages/55.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Selenium</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="../../../../libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="../../../../tags/%E7%BC%96%E7%A8%8B/">
+                                <span class="chip bg-color">编程</span>
+                            </a>
+                        
+                            <a href="../../../../tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">
+                                <span class="chip bg-color">自动化</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-02-19
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-02-24
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    3.7k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="../../../../libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>在很多情况下，我们都需要一个能模拟用户在浏览器中行为的工具。可能我们会觉得抓包请求的方式过于复杂且容易被网站的反爬虫机制封杀，而我们很多情况下又不是非常在意性能，此时 Selenium 就是一个适合的选择。</p>
+<p>Selenium 是一个将浏览器自动化的工具，一般所说的 Selenium 指的是 Selenium WebDriver。</p>
+<p>旗下有三套件：</p>
+<ul>
+<li>WebDriver：是一套操作浏览器的 API</li>
+<li>IDE：具体实现就是一款浏览器插件，可以在 Chrome 和 Firefox 上面搜索安装。能够记录浏览器操作的步骤，并导出为编程文件（如 .py)。 可以作为学习 WebDriver 的工具</li>
+<li>Grid：跨平台远程自动操作脚本</li>
+</ul>
+<p>Selenium 还为各类语言提供了客户端使用户可以在各类语言里直接进行调用。</p>
+<p>Selenium最初的目的是为网页提供自动化测试的工具，然而现在更多的被用在爬虫等领域。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>这篇文章使用 Python 作为基础环境。请先安装最新版的 Python 到系统上面。然后执行 <code>pip install selenium</code>，安装 selenium。由于 Selenium 需要对浏览器进行操作，因此除了 Selenium，我们还需要下载浏览器驱动。<strong>注意：驱动需要下载浏览器对应的版本。</strong></p>
+<table>
+<thead>
+<tr>
+<th>Browser</th>
+<th>Download URL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Firefox</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/mozilla/geckodriver/releases">https://github.com/mozilla/geckodriver/releases</a></td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td><a target="_blank" rel="noopener" href="https://chromedriver.chromium.org/downloads">https://chromedriver.chromium.org/downloads</a></td>
+</tr>
+</tbody></table>
+<p>Python 需要调用浏览器的 driver，我们需要指定 driver 的位置。 如果 selenium 找不到 driver， 会报如下错误</p>
+<blockquote>
+<p>raise WebDriverException(selenium.common.exceptions.WebDriverException: Message: ‘geckodriver’ executable needs to be in PATH.)</p>
+</blockquote>
+<ul>
+<li><p>方法 1<br>  以 Windows 10 和 firefox 为例：</p>
+<p>  将 <code>geckodriver.exe</code> 放到下面的路径，不能修改文件名：<br>  <code>C:\Users\Bin\AppData\Local\Programs\Python\Python310\Scripts\</code></p>
+</li>
+<li><p>方法 2<br>  或者，添加到系统路径</p>
+  <pre class="line-numbers language-bat" data-language="bat"><code class="language-bat">echo %PATH%
+setx PATH &quot;%PATH%;C:\WebDriver\bin&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>  然后 cmd 运行 <code>chromedriver.exe</code>， 如果有以下提示，代表成功</p>
+  <pre class="line-numbers language-none"><code class="language-none">Starting ChromeDriver 95.0.4638.54 (d31a821ec901f68d0d34ccdbaea45b4c86ce543e-refs&#x2F;branch-heads&#x2F;4638@&#123;#871&#125;) on port 9515
+Only local connections are allowed.
+Please see https:&#x2F;&#x2F;chromedriver.chromium.org&#x2F;security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>方法 3<br>  直接指定 driver 的路径</p>
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python">service <span class="token operator">=</span> Service<span class="token punctuation">(</span>executable_path<span class="token operator">=</span><span class="token string">"/path/to/chromedriver"</span><span class="token punctuation">)</span>
+driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span>service<span class="token operator">=</span>service<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+</ul>
+<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><ul>
+<li><p>Chrome</p>
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>chrome<span class="token punctuation">.</span>options <span class="token keyword">import</span> Options <span class="token keyword">as</span> ChromeOptions
+options <span class="token operator">=</span> ChromeOptions<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span>options<span class="token operator">=</span>options<span class="token punctuation">)</span>
+
+driver<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>Firefox</p>
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>firefox<span class="token punctuation">.</span>options <span class="token keyword">import</span> Options <span class="token keyword">as</span> FirefoxOptions
+options <span class="token operator">=</span> FirefoxOptions<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Firefox<span class="token punctuation">(</span>options<span class="token operator">=</span>options<span class="token punctuation">)</span>
+
+driver<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>基本操作(8个)</p>
+<p>  基于 Selenium 4.1.0</p>
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python">driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 指定浏览器驱动，Chrome 的写法大小写敏感，Firefox 同样</span>
+driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"http://www.google.com"</span><span class="token punctuation">)</span> <span class="token comment"># take action on browser </span>
+title <span class="token operator">=</span> driver<span class="token punctuation">.</span>title <span class="token comment"># request browser information, such as browser size/position, cookies</span>
+driver<span class="token punctuation">.</span>implicitly_wait<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">)</span> <span class="token comment"># Establish Waiting Strategy. An implicit wait is rarely the best solution, but it's the easiest to demonstrate here, so we'll use it as a placeholder.</span>
+search_box <span class="token operator">=</span> driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>NAME<span class="token punctuation">,</span> <span class="token string">"q"</span><span class="token punctuation">)</span> <span class="token comment"># Find an element</span>
+search_button <span class="token operator">=</span> driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>NAME<span class="token punctuation">,</span> <span class="token string">"btnK"</span><span class="token punctuation">)</span> <span class="token comment"># same as above</span>
+search_box<span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">"Selenium"</span><span class="token punctuation">)</span> <span class="token comment"># take action on element</span>
+search_button<span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># same as above </span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>NAME<span class="token punctuation">,</span> <span class="token string">"q"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get_attribute<span class="token punctuation">(</span><span class="token string">"value"</span><span class="token punctuation">)</span> <span class="token comment"># request element information</span>
+driver<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># end the seesion </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>Firefox option</p>
+<p>  firefox set a custom profile</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.programcreek.com/python/example/100026/selenium.webdriver.FirefoxProfile">https://www.programcreek.com/python/example/100026/selenium.webdriver.FirefoxProfile</a></p>
+</blockquote>
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>firefox<span class="token punctuation">.</span>options <span class="token keyword">import</span> Options
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>firefox<span class="token punctuation">.</span>firefox_profile <span class="token keyword">import</span> FirefoxProfile 
+options<span class="token operator">=</span>Options<span class="token punctuation">(</span><span class="token punctuation">)</span>
+firefox_profile <span class="token operator">=</span> FirefoxProfile<span class="token punctuation">(</span><span class="token punctuation">)</span>
+firefox_profile<span class="token punctuation">.</span>set_preference<span class="token punctuation">(</span><span class="token string">"javascript.enabled"</span><span class="token punctuation">,</span> <span class="token boolean">False</span><span class="token punctuation">)</span>
+options<span class="token punctuation">.</span>profile <span class="token operator">=</span> firefox_profile<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>  OR (旧版本的 selenium 使用，现在 FirefoxProfile 已经弃用)</p>
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+fp <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>FirefoxProfile<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+fp<span class="token punctuation">.</span>set_preference<span class="token punctuation">(</span><span class="token string">"browser.download.dir"</span><span class="token punctuation">,</span> os<span class="token punctuation">.</span>getcwd<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+browser <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Firefox<span class="token punctuation">(</span>firefox_profile<span class="token operator">=</span>fp<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>back &amp; forward &amp; refresh</p>
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python">driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://selenium.dev"</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>back<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>forward<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>refresh<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>alert</p>
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>common<span class="token punctuation">.</span>by <span class="token keyword">import</span> By 
+<span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Firefox<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://www.selenium.dev/documentation/webdriver/browser/alerts/"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Click the link to activate the alert</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>LINK_TEXT<span class="token punctuation">,</span> <span class="token string">"See an example alert"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Wait for the alert to be displayed and store it in a variable</span>
+alert <span class="token operator">=</span> wait<span class="token punctuation">.</span>until<span class="token punctuation">(</span>expected_conditions<span class="token punctuation">.</span>alert_is_present<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Store the alert text in a variable</span>
+text <span class="token operator">=</span> alert<span class="token punctuation">.</span>text
+
+<span class="token comment"># Press the OK button</span>
+alert<span class="token punctuation">.</span>accept<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># confirm operation </span>
+
+<span class="token comment"># Click the link to activate the alert</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>LINK_TEXT<span class="token punctuation">,</span> <span class="token string">"See a sample confirm"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Wait for the alert to be displayed</span>
+wait<span class="token punctuation">.</span>until<span class="token punctuation">(</span>expected_conditions<span class="token punctuation">.</span>alert_is_present<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Store the alert in a variable for reuse</span>
+alert <span class="token operator">=</span> driver<span class="token punctuation">.</span>switch_to<span class="token punctuation">.</span>alert
+
+<span class="token comment"># Store the alert text in a variable</span>
+text <span class="token operator">=</span> alert<span class="token punctuation">.</span>text
+
+<span class="token comment"># Press the Cancel button</span>
+alert<span class="token punctuation">.</span>dismiss<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># prompt operation </span>
+
+<span class="token comment"># Click the link to activate the alert</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>LINK_TEXT<span class="token punctuation">,</span> <span class="token string">"See a sample prompt"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Wait for the alert to be displayed</span>
+wait<span class="token punctuation">.</span>until<span class="token punctuation">(</span>expected_conditions<span class="token punctuation">.</span>alert_is_present<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Store the alert in a variable for reuse</span>
+alert <span class="token operator">=</span> Alert<span class="token punctuation">(</span>driver<span class="token punctuation">)</span>
+
+<span class="token comment"># Type your message</span>
+alert<span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">"Selenium"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Press the OK button</span>
+alert<span class="token punctuation">.</span>accept<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>cookie</p>
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+
+driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Navigate to url</span>
+driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"http://www.example.com"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Adds the cookie into current browser context</span>
+driver<span class="token punctuation">.</span>add_cookie<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"foo"</span><span class="token punctuation">,</span> <span class="token string">"value"</span><span class="token punctuation">:</span> <span class="token string">"bar"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Get cookie details with named cookie 'foo'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>driver<span class="token punctuation">.</span>get_cookie<span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 注意，是用 ‘foo' 来查找。</span>
+
+<span class="token comment"># 可以追加多个 cookie，这些 cookie 组成一个列表。</span>
+driver<span class="token punctuation">.</span>add_cookie<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"test1"</span><span class="token punctuation">,</span> <span class="token string">"value"</span><span class="token punctuation">:</span> <span class="token string">"cookie1"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>add_cookie<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"test2"</span><span class="token punctuation">,</span> <span class="token string">"value"</span><span class="token punctuation">:</span> <span class="token string">"cookie2"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Get all available cookies</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>driver<span class="token punctuation">.</span>get_cookies<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Delete a cookie with name 'test1'</span>
+driver<span class="token punctuation">.</span>delete_cookie<span class="token punctuation">(</span><span class="token string">"test1"</span><span class="token punctuation">)</span>
+<span class="token comment">#  Deletes all cookies</span>
+driver<span class="token punctuation">.</span>delete_all_cookies<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>windows &amp; tabs</p>
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python">driver<span class="token punctuation">.</span>current_window_handle <span class="token comment"># 获取当前的 window handle</span>
+driver<span class="token punctuation">.</span>window_handles <span class="token comment"># 获取所有的 handle, 返回列表</span>
+driver<span class="token punctuation">.</span>switch_to<span class="token punctuation">.</span>window<span class="token punctuation">(</span>window_handle<span class="token punctuation">)</span> <span class="token comment"># 切换到其他 tab</span>
+
+<span class="token comment"># Opens a new tab and switches to new tab</span>
+driver<span class="token punctuation">.</span>switch_to<span class="token punctuation">.</span>new_window<span class="token punctuation">(</span><span class="token string">'tab'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Opens a new window and switches to new window</span>
+driver<span class="token punctuation">.</span>switch_to<span class="token punctuation">.</span>new_window<span class="token punctuation">(</span><span class="token string">'window'</span><span class="token punctuation">)</span>
+
+driver<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># close current tab</span>
+driver<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># close all the tabs</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>  Quit will:</p>
+<ol>
+<li>Close all the windows and tabs associated with that WebDriver session</li>
+<li>Close the browser process</li>
+<li>Close the background driver process<br>Notify Selenium Grid that the browser is no longer in use so it can be used by another session (if you are using Selenium Grid)</li>
+</ol>
+<p>  auto quit：</p>
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">with</span> webdriver<span class="token punctuation">.</span>Firefox<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> driver<span class="token punctuation">:</span>
+    <span class="token comment"># WebDriver code here...</span>
+    <span class="token comment"># WebDriver will automatically quit after indentation</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">try</span><span class="token punctuation">:</span>
+    <span class="token comment">#WebDriver code here...</span>
+<span class="token keyword">finally</span><span class="token punctuation">:</span>
+    driver<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>window size &amp; position</p>
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python">width <span class="token operator">=</span> driver<span class="token punctuation">.</span>get_window_size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"width"</span><span class="token punctuation">)</span>
+height <span class="token operator">=</span> driver<span class="token punctuation">.</span>get_window_size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"height"</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>set_window_size<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">,</span> <span class="token number">768</span><span class="token punctuation">)</span> 
+
+x <span class="token operator">=</span> driver<span class="token punctuation">.</span>get_window_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'x'</span><span class="token punctuation">)</span>
+y <span class="token operator">=</span> driver<span class="token punctuation">.</span>get_window_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'y'</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>set_window_position<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+
+driver<span class="token punctuation">.</span>maximize_window<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>minimize_window<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>fullscreen_window<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>screenshot</p>
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python">driver<span class="token punctuation">.</span>save_screenshot<span class="token punctuation">(</span><span class="token string">'./imagetest.png'</span><span class="token punctuation">)</span> <span class="token comment"># 只能截取当前浏览器显示的区域</span>
+
+ele <span class="token operator">=</span> driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>CSS_SELECTOR<span class="token punctuation">,</span> <span class="token string">'h1'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Returns and base64 encoded string into image</span>
+ele<span class="token punctuation">.</span>screenshot<span class="token punctuation">(</span><span class="token string">'./image.png'</span><span class="token punctuation">)</span> <span class="token comment"># 截取选中的元素</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>locator</p>
+<p>  这里最好用的当属 <code>XPATH</code>，掌握了这个，其他可以不用滴。后面有关于 XPATH 用法的介绍</p>
+<table>
+<thead>
+<tr>
+<th>Locator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>class name</td>
+<td>Locates elements whose class name contains the search value (compound class names are not permitted)</td>
+</tr>
+<tr>
+<td>css selector</td>
+<td>Locates elements matching a CSS selector</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Locates elements whose ID attribute matches the search value</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Locates elements whose NAME attribute matches the search value</td>
+</tr>
+<tr>
+<td>link text</td>
+<td>Locates anchor elements whose visible text matches the search value</td>
+</tr>
+<tr>
+<td>partial link text</td>
+<td>Locates anchor elements whose visible text contains the search value. If multiple elements are matching, only the first one will be selected.</td>
+</tr>
+<tr>
+<td>tag name</td>
+<td>Locates elements whose tag name matches the search value</td>
+</tr>
+<tr>
+<td>xpath</td>
+<td>Locates elements matching an XPath expression</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>find_element 函数用法</p>
+<p>  示例代码：</p>
+  <pre class="line-numbers language-HTML" data-language="HTML"><code class="language-HTML">&lt;ol id&#x3D;&quot;vegetables&quot;&gt;
+&lt;li class&#x3D;&quot;potatoes&quot;&gt;…
+&lt;li class&#x3D;&quot;onions&quot;&gt;…
+&lt;li class&#x3D;&quot;tomatoes&quot;&gt;&lt;span&gt;Tomato is a Vegetable&lt;&#x2F;span&gt;…
+&lt;&#x2F;ol&gt;
+&lt;ul id&#x3D;&quot;fruits&quot;&gt;
+&lt;li class&#x3D;&quot;bananas&quot;&gt;…
+&lt;li class&#x3D;&quot;apples&quot;&gt;…
+&lt;li class&#x3D;&quot;tomatoes&quot;&gt;&lt;span&gt;Tomato is a Fruit&lt;&#x2F;span&gt;…
+&lt;&#x2F;ul&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python">fruits <span class="token operator">=</span> driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> <span class="token string">"fruits"</span><span class="token punctuation">)</span>
+fruit <span class="token operator">=</span> fruits<span class="token punctuation">.</span>find_elements<span class="token punctuation">(</span>By<span class="token punctuation">.</span>CLASS_NAME<span class="token punctuation">,</span> <span class="token string">"tomatoes"</span><span class="token punctuation">)</span>
+
+fruit <span class="token operator">=</span> driver<span class="token punctuation">.</span>find_elements<span class="token punctuation">(</span>By<span class="token punctuation">.</span>CSS_SELECTOR<span class="token punctuation">,</span><span class="token string">"#fruits .tomatoes"</span><span class="token punctuation">)</span>
+
+plants <span class="token operator">=</span> driver<span class="token punctuation">.</span>find_elements<span class="token punctuation">(</span>By<span class="token punctuation">.</span>TAG_NAME<span class="token punctuation">,</span> <span class="token string">"li"</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> e <span class="token keyword">in</span> plants<span class="token punctuation">:</span> 
+    <span class="token keyword">print</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>  示例代码：</p>
+  <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>gLFyf gsfi<span class="token punctuation">"</span></span> <span class="token attr-name">jsaction</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>paste:puy29d;<span class="token punctuation">"</span></span> <span class="token attr-name">maxlength</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2048<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>q<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">aria-autocomplete</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>both<span class="token punctuation">"</span></span> <span class="token attr-name">aria-haspopup</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token attr-name">autocapitalize</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>none<span class="token punctuation">"</span></span> <span class="token attr-name">autocomplete</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>off<span class="token punctuation">"</span></span> <span class="token attr-name">autocorrect</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>off<span class="token punctuation">"</span></span> <span class="token attr-name">autofocus</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>combobox<span class="token punctuation">"</span></span> <span class="token attr-name">spellcheck</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Google 搜索<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>搜索<span class="token punctuation">"</span></span> <span class="token attr-name">data-ved</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0ahUKEwiU6uvQ4_b1AhVjJ0QIHVxJAeAQ39UDCAQ<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>common<span class="token punctuation">.</span>by <span class="token keyword">import</span> By
+
+driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Firefox<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://www.google.com"</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>CSS_SELECTOR<span class="token punctuation">,</span> <span class="token string">'[name="q"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">"webElement"</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>NAME<span class="token punctuation">,</span> <span class="token string">"q"</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>CLASS_NAME<span class="token punctuation">,</span> <span class="token string">"gLFyf"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">"webElement"</span><span class="token punctuation">)</span> <span class="token comment"># 注意，class 有两个：gLFyf gsfi, 中间是个空格分开</span>
+
+<span class="token comment"># Get attribute of current active element</span>
+attr <span class="token operator">=</span> driver<span class="token punctuation">.</span>switch_to<span class="token punctuation">.</span>active_element<span class="token punctuation">.</span>get_attribute<span class="token punctuation">(</span><span class="token string">"title"</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>attr<span class="token punctuation">)</span> <span class="token comment"># "Google 搜索" </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>click &amp; sendkey</p>
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>NAME<span class="token punctuation">,</span> <span class="token string">"q"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">"webdriver"</span> <span class="token operator">+</span> Keys<span class="token punctuation">.</span>ENTER<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>common<span class="token punctuation">.</span>by <span class="token keyword">import</span> By
+driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment"># Navigate to url</span>
+driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"http://www.google.com"</span><span class="token punctuation">)</span>
+    <span class="token comment"># Store 'SearchInput' element</span>
+SearchInput <span class="token operator">=</span> driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>NAME<span class="token punctuation">,</span> <span class="token string">"q"</span><span class="token punctuation">)</span>
+SearchInput<span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">"selenium"</span><span class="token punctuation">)</span>
+    <span class="token comment"># Clears the entered text</span>
+SearchInput<span class="token punctuation">.</span>clear<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>查看元素属性</p>
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python">value <span class="token operator">=</span> driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>NAME<span class="token punctuation">,</span> <span class="token string">'btnK'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>is_enabled<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span>is_selected<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span>tag_name <span class="token comment"># 没有括号</span>
+<span class="token punctuation">.</span>is_displayed<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python">res <span class="token operator">=</span> driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>CSS_SELECTOR<span class="token punctuation">,</span> <span class="token string">"h1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>rect <span class="token comment">#返回字典格式的 长宽，左上角的坐标数据</span>
+cssValue <span class="token operator">=</span> driver<span class="token punctuation">.</span>findElement<span class="token punctuation">(</span>By<span class="token punctuation">.</span>LINK_TEXT<span class="token punctuation">,</span> <span class="token string">"More information..."</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value_of_css_property<span class="token punctuation">(</span><span class="token string">'color'</span><span class="token punctuation">)</span> <span class="token comment"># Get CSS Value</span>
+text <span class="token operator">=</span> driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>CSS_SELECTOR<span class="token punctuation">,</span> <span class="token string">"h1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>text <span class="token comment"># get the text </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li><p>Select</p>
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>support<span class="token punctuation">.</span>select <span class="token keyword">import</span> Select
+select_element <span class="token operator">=</span> driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span><span class="token string">'selectElementID'</span><span class="token punctuation">)</span>
+select_object <span class="token operator">=</span> Select<span class="token punctuation">(</span>select_element<span class="token punctuation">)</span>
+
+<span class="token comment"># &lt;select></span>
+<span class="token comment">#  &lt;option value=value1>Bread&lt;/option></span>
+<span class="token comment">#  &lt;option value=value2 selected>Milk&lt;/option></span>
+<span class="token comment">#  &lt;option value=value3>Cheese&lt;/option></span>
+<span class="token comment"># &lt;/select></span>
+
+
+<span class="token comment"># Select an &lt;option> based upon the &lt;select> element's internal index</span>
+select_object<span class="token punctuation">.</span>select_by_index<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Select an &lt;option> based upon its value attribute</span>
+select_object<span class="token punctuation">.</span>select_by_value<span class="token punctuation">(</span><span class="token string">'value1'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Select an &lt;option> based upon its text</span>
+select_object<span class="token punctuation">.</span>select_by_visible_text<span class="token punctuation">(</span><span class="token string">'Bread'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Return a list[WebElement] of options that have been selected</span>
+all_selected_options <span class="token operator">=</span> select_object<span class="token punctuation">.</span>all_selected_options
+
+<span class="token comment"># Return a WebElement referencing the first selection option found by walking down the DOM</span>
+first_selected_option <span class="token operator">=</span> select_object<span class="token punctuation">.</span>first_selected_option
+
+<span class="token comment"># Return a list[WebElement] of options that the &lt;select> element contains</span>
+all_available_options <span class="token operator">=</span> select_object<span class="token punctuation">.</span>options
+
+
+<span class="token comment"># Deselect an &lt;option> based upon the &lt;select> element's internal index</span>
+select_object<span class="token punctuation">.</span>deselect_by_index<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Deselect an &lt;option> based upon its value attribute</span>
+select_object<span class="token punctuation">.</span>deselect_by_value<span class="token punctuation">(</span><span class="token string">'value1'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Deselect an &lt;option> based upon its text</span>
+select_object<span class="token punctuation">.</span>deselect_by_visible_text<span class="token punctuation">(</span><span class="token string">'Bread'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Deselect all selected &lt;option> elements</span>
+select_object<span class="token punctuation">.</span>deselect_all<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+does_this_allow_multiple_selections <span class="token operator">=</span> select_object<span class="token punctuation">.</span>is_multiple <span class="token comment"># Finally, some &lt;select> elements allow you to select more than one option. You can find out if your &lt;select> element is one of these by using this</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>基于相对位置的定位</p>
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python">email_locator <span class="token operator">=</span> locate_with<span class="token punctuation">(</span>By<span class="token punctuation">.</span>TAG_NAME<span class="token punctuation">,</span> <span class="token string">"input"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>above<span class="token punctuation">(</span><span class="token punctuation">&#123;</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">:</span> <span class="token string">"password"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+submit_locator <span class="token operator">=</span> locate_with<span class="token punctuation">(</span>By<span class="token punctuation">.</span>TAG_NAME<span class="token punctuation">,</span> <span class="token string">"button"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>below<span class="token punctuation">(</span><span class="token punctuation">&#123;</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">:</span> <span class="token string">"email"</span><span class="token punctuation">&#125;</span><span class="token punctuation">.</span>to_right_of<span class="token punctuation">(</span><span class="token punctuation">&#123;</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">:</span> <span class="token string">"cancel"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+email_locator <span class="token operator">=</span> locate_with<span class="token punctuation">(</span>By<span class="token punctuation">.</span>TAG_NAME<span class="token punctuation">,</span> <span class="token string">"input"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>near<span class="token punctuation">(</span><span class="token punctuation">&#123;</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">:</span> <span class="token string">"lbl-email"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h2 id="wait"><a href="#wait" class="headerlink" title="wait"></a>wait</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>support<span class="token punctuation">.</span>ui <span class="token keyword">import</span> WebDriverWait
+
+driver<span class="token punctuation">.</span>navigate<span class="token punctuation">(</span><span class="token string">"file:///race_condition.html"</span><span class="token punctuation">)</span>
+el <span class="token operator">=</span> WebDriverWait<span class="token punctuation">(</span>driver<span class="token punctuation">)</span><span class="token punctuation">.</span>until<span class="token punctuation">(</span><span class="token keyword">lambda</span> d<span class="token punctuation">:</span> d<span class="token punctuation">.</span>find_element_by_tag_name<span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">assert</span> el<span class="token punctuation">.</span>text <span class="token operator">==</span> <span class="token string">"Hello from JavaScript!"</span>
+
+WebDriverWait<span class="token punctuation">(</span>driver<span class="token punctuation">,</span> timeout<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span>until<span class="token punctuation">(</span>some_condition<span class="token punctuation">)</span>
+
+driver <span class="token operator">=</span> Firefox<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"http://somedomain/url_that_delays_loading"</span><span class="token punctuation">)</span>
+wait <span class="token operator">=</span> WebDriverWait<span class="token punctuation">(</span>driver<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> poll_frequency<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> ignored_exceptions<span class="token operator">=</span><span class="token punctuation">[</span>ElementNotVisibleException<span class="token punctuation">,</span> ElementNotSelectableException<span class="token punctuation">]</span><span class="token punctuation">)</span>
+element <span class="token operator">=</span> wait<span class="token punctuation">.</span>until<span class="token punctuation">(</span>EC<span class="token punctuation">.</span>element_to_be_clickable<span class="token punctuation">(</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span>XPATH<span class="token punctuation">,</span> <span class="token string">"//div"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="xpath"><a href="#xpath" class="headerlink" title="xpath"></a>xpath</h2><p><a target="_blank" rel="noopener" href="https://www.lambdatest.com/blog/complete-guide-for-using-xpath-in-selenium-with-examples/">https://www.lambdatest.com/blog/complete-guide-for-using-xpath-in-selenium-with-examples/</a></p>
+<p> <code>//div[@id=&#39;app&#39;]/div</code> 与 <code>//div[@id=&#39;app&#39;]//div</code> 区别：前者只定位 id 为 app 的 div 的<strong>子代 div</strong>。</p>
+<ul>
+<li><p>绝对路径</p>
+<p>  <code>/html//div/div/div/div[1]/div/a/img</code><br>  <code>/</code>，一个斜杆表示绝对路径，html 后有两个 //， 表示相对路径。相对路径和绝对路径可以混用（个人理解）</p>
+</li>
+<li><p>相对路径</p>
+<p>  <code>//tagname[@Attribute=&#39;Value&#39;]</code><br>  相对路径，两个 <code>//</code><br>  例子：<br>  <code>//a[@class=&#39;googleSignInBtn&#39;]</code><br>  <code>//input[@name=&#39;phone&#39;]</code><br>  <code>//a[@href=&#39;/login&#39;]</code><br>  <code>//input[@placeholder=&#39;Full Name*&#39;]</code>  </p>
+</li>
+<li><p>contains</p>
+<p>  <code>//tagname[contains(@attribute,constantvalue)]</code><br>  constant value: 常量</p>
+<p>  例子：<br>  <code>//button[contains(@class,&#39;submit-btn&#39;)]</code><br>  注意下面的 html 代码，class 有很多个属性，我们使用 contains 就可以只用包含其中的一个</p>
+  <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>signup-button<span class="token punctuation">"</span></span> <span class="token attr-name">data-sitekey</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>6LceAqQaAAAAAO0LcIgLnXy3gH_M3X5aDrqUihHw<span class="token punctuation">"</span></span> <span class="token attr-name">data-callback</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>onSubmit<span class="token punctuation">"</span></span> <span class="token attr-name">data-amplitude</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>R_signup<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>w-full influ2--goal submit-btn font-semibold  tracking-custom flex items-center xxxl:h-54 xxl:h-47 h-40 bg-black text-white xxxl:text-size-16 xxl:text-size-14 text-size-12 justify-center rounded submit-btn g-recaptcha<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Free Sign Up<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>  <code>//a[contains(.,&#39;Ask Question&#39;)]</code><br>  a 标签下有 ‘ask Question’ text，最常用</p>
+<p>  <code>//a[text()=&#39;Ask Question&#39;]</code><br>  与上面的区别：<br>   <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/69909751/why-is-xpath-containstext-substring-not-working-as-expected?noredirect=1&amp;lq=1">https://stackoverflow.com/questions/69909751/why-is-xpath-containstext-substring-not-working-as-expected?noredirect=1&amp;lq=1</a></p>
+<p>  <strong>contains 与 [@Attribute=’Value’] 用法的区别：contains 可以只包含属性中的<code>部分</code>字段，而后者必须全部包含</strong><br>  例如：<code>&lt;span id=&#39;select2-chosen-19&#39;&gt;</code>，后面的 <code>19</code> 是随机生成的，我们在定位的时候，就可以选择 contains，<br>  <code>//span[contains(@id,&#39;select2-chosen&#39;)]</code></p>
+</li>
+<li><p>text()</p>
+<p>  <code>//tagname[text()=&#39;Text of the Web Element&#39;]</code><br>  <code>//span[text()=&#39;Sign up with Google&#39;]</code></p>
+</li>
+<li><p>and &amp; or</p>
+<p>  <code>XPath=//tagname[@attribute1=value1 or @attribute2=value1]</code><br>  <code>XPath=//tagname[@attribute1=value1 and @attribute2=value1]</code><br>  <strong>必须使用小写，不然会报错</strong></p>
+<p>  <code>//input[@name=&quot;email&quot; and contains(@placeholder,&#39;Email&#39;)]</code></p>
+</li>
+<li><p>Starts-With()</p>
+<p>  The Starts-With() method is similar to the Contains() method. It is helpful in the case of web elements whose attribute value can change dynamically.</p>
+<p>  <code>//tagname[starts-with(@attribute,value)]</code><br>  <code>//input[starts-with(@placeholder,&#39;Phone&#39;)]</code></p>
+  <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>phone<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>phone<span class="token punctuation">"</span></span> <span class="token attr-name">pattern</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[0-9\+\- ]+<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Phone (+1 555 555 5555)*<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>phone<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">required</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>required<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>w-full tracking-custom xxxl:text-size-18 xxl:text-size-16 text-size-14 placeholder:text-gray-300 text-black rounded-md py-10 xxxl:pl-24 xxl:pl-18 pl-12 pr-75 xxxl:h-54 xxl:h-47 h-40 <span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>index</p>
+<p>  <code>//tagname[@attribute=&#39;value&#39;][Index Number]</code></p>
+<p>  <code>(//div[@class=&#39;form-group&#39;]//select)[2]</code><br>  找到第二个 div 下的 select 元素</p>
+</li>
+<li><p>chained Xpath<br>  <code>//tagname1[@attribute1=value1]//tagname2[@attribute2=value2]</code></p>
+<p>  <code>//label[@name=&#39;i_agree&#39;]//input[@data-amplitude=&#39;R_pp&#39;]</code></p>
+  <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>i_agree flex items-center xxxl:text-size-16 xxl:text-size-14 text-size-12 text-black font-normal mb-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>i-agree<span class="token punctuation">"</span></span> <span class="token attr-name">data-amplitude</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>R_agree<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>i_agree<span class="token punctuation">"</span></span> <span class="token attr-name">required</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>required<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span> <span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>samp</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>customcheckbox<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">margin-right</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>samp</span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">data-amplitude</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>R_pp<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>I agree to LambdaTest's <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://www.lambdatest.com/legal/privacy<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text-blue-100 hover:underline<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Privacy Policy<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> <span class="token entity named-entity" title="&amp;">&amp;amp;</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span> <span class="token attr-name">data-amplitude</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>R_tos<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://www.lambdatest.com/legal/terms-of-service<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text-blue-100 hover:underline<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Terms of Service<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<h3 id="XPath-axes"><a href="#XPath-axes" class="headerlink" title="XPath axes"></a>XPath axes</h3><p>总结如下，一个图胜过千言万语。</p>
+<p><img src="Xpath_tree.jpg"></p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/49966055/difference-between-child-following-and-descendant-in-xpath-axes">https://stackoverflow.com/questions/49966055/difference-between-child-following-and-descendant-in-xpath-axes</a></p>
+</blockquote>
+<p>Following 与 Following-Sibling 区别：前者是当前节点后面所有的节点的总和（范围是整个 DOM），而后者则是同一个 parent 下后面的节点的总和</p>
+<ul>
+<li><p>Following</p>
+<blockquote>
+<p>This can be used when you have a unique attribute of the tag before your actual web element. For example, on using Following, you can have all the elements that <code>follow the current node</code>, and you can simply use <code>Index</code> or another <code>chained XPath</code> to locate your actual web element.</p>
+</blockquote>
+<p>  <code>//tagname[@attribute=&#39;value&#39;]//following::tagname</code></p>
+<p>  <code>//div[contains(@class,&#39;password-group&#39;)]//following::div//input[@type=&#39;phone&#39;]</code></p>
+  <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>w-full custom__border xxxl:mt-23 xxl:mt-20 mt-18 password-group<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>w-full relative custom__border <span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Desired Password*<span class="token punctuation">"</span></span> <span class="token attr-name">required</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>required<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>userpassword<span class="token punctuation">"</span></span> <span class="token attr-name">minlength</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>8<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>w-full tracking-custom xxxl:text-size-18 xxl:text-size-16 text-size-14 placeholder:text-gray-300 text-black rounded-md py-10 xxxl:pl-24 xxl:pl-18 pl-12 pr-75 xxxl:h-54 xxl:h-47 h-40 <span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>absolute right-0 top-0 flex items-center xxxl:h-54 xxl:h-47 h-40 font-normal cursor-pointer pr-18 uppercase<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">togglePasswordVisibility</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token string">'userpassword'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password-group-text xxxl:text-size-14 xxl:text-size-12 text-size-10 block text-gray-300 tracking-custom<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Show<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>        
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>w-full custom__border xxxl:mt-23 xxl:mt-20 mt-18 <span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>phone<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>phone<span class="token punctuation">"</span></span> <span class="token attr-name">pattern</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[0-9\+\- ]+<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Phone (+1 555 555 5555)*<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>phone<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">required</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>required<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>w-full tracking-custom xxxl:text-size-18 xxl:text-size-16 text-size-14 placeholder:text-gray-300 text-black rounded-md py-10 xxxl:pl-24 xxl:pl-18 pl-12 pr-75 xxxl:h-54 xxl:h-47 h-40 <span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>Following-Sibling</p>
+<blockquote>
+<p>As the term signifies, siblings are those nodes that share the same parent or are at the same level. Hence, Following-Sibling will return you the node <code>at the same level</code> and <code>after</code> the current node.</p>
+</blockquote>
+<p>  <code>//tagname[@attribute=&#39;value&#39;]//following-sibiling::tagname</code></p>
+<p>  <code>//option[@value=&#39;Manager&#39;]//following-sibling::option[1]</code><br>  same as<br>  <code>//option[@value=&#39;Manager&#39;]//following-sibling::option[@value=&#39;Director/VP&#39;]</code></p>
+  <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>value=<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>designation<span class="token punctuation">"</span></span> <span class="token attr-name">required</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>required<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>designation<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>w-full tracking-custom xxxl:text-size-18 xxl:text-size-16 text-size-14 placeholder:text-gray-300 text-black rounded-md py-10 xxxl:px-24 xxl:px-18 px-12 xxxl:h-54 xxl:h-47 h-40 custom_select<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">selected</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>selected<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">disabled</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>disabled<span class="token punctuation">"</span></span> <span class="token attr-name">hidden</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hidden<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Designation/Role<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Student/Freelancer<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Student / Freelancer<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Developer/Tester<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Developer / Tester<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Manager<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Manager<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Director/VP<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Director / VP<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Founder/CXO<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Founder / CXO<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>Preceding</p>
+<p>  与 following 相对，寻找当前节点的前的元素</p>
+<blockquote>
+<p>locate all the elements before the current node</p>
+</blockquote>
+<p>  <code>//tagname[@attribute=&#39;value&#39;]//preceding::tagname</code></p>
+</li>
+<li><p>Preceding-Sibling</p>
+<blockquote>
+<p> get all the nodes that are siblings or at the same level but are before your current node.</p>
+</blockquote>
+</li>
+<li><p>Child</p>
+<p>  <code>//tagname[@attribute=&#39;value&#39;]//child::tagname</code></p>
+</li>
+<li><p>Parent</p>
+<p>  <code>//tagname[@attribute=&#39;value&#39;]//parent::tagname</code></p>
+</li>
+<li><p>Descendant</p>
+<blockquote>
+<p>Descendants refer to the child nodes, grandchild nodes, etc.</p>
+</blockquote>
+<p>  <code>//tagname[@attribute=&#39;value&#39;]//descendant::tagname</code></p>
+</li>
+<li><p>Ancestor</p>
+<blockquote>
+<p>Ancestors refer to the parent nodes, grandparent nodes, etc.</p>
+</blockquote>
+<p>  <code>//tagname[@attribute=&#39;value&#39;]//ancestors::tagname</code></p>
+</li>
+<li><p>特殊?  </p>
+<p>   <code>//input[attribute::name = &#39;q&#39;]</code></p>
+</li>
+</ul>
+<h2 id="scroll"><a href="#scroll" class="headerlink" title="scroll"></a>scroll</h2><p><a target="_blank" rel="noopener" href="https://www.lambdatest.com/blog/scroll-a-webpage-in-selenium-using-java/">https://www.lambdatest.com/blog/scroll-a-webpage-in-selenium-using-java/</a></p>
+<blockquote>
+<p>JavaScriptExecutor in Selenium is used to execute the code written in Javascript within the Selenium automation framework. This interface has two methods namely <code>ExecuteScript</code> and <code>ExecuteAsyncScript</code> which are used to execute the JavaScript code.</p>
+</blockquote>
+<ul>
+<li><p>scroll down to the bottom of the page</p>
+<p>  移动到网页底部<br>  <code>driver.execute_script(&quot;window.scrollTo(0, document.body.scrollHeight)&quot;)</code></p>
+<p>  移动到网页顶部<br>  <code>(&quot;window.scrollTo(0,0)&quot;)</code></p>
+</li>
+<li><p>scroll by the visibility of WebElement on the page</p>
+  <pre class="line-numbers language-python" data-language="python"><code class="language-python">test_element <span class="token operator">=</span> driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>XPATH<span class="token punctuation">,</span> <span class="token string">"//a[contains(.,'关于我们')]"</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>execute_script<span class="token punctuation">(</span><span class="token string">"arguments[0].scrollIntoView();"</span><span class="token punctuation">,</span> test_element<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>scroll down in a page by specified pixels</p>
+<p>  <code>driver.execute_script(&quot;window.scrollBy(0,3000)&quot;)</code>  </p>
+<p>  specify the number of pixels the page has to be scrolled。第一个参数控制左右。正数向右，负数向左。第二个参数控制上下，正数为向下，负数向上。</p>
+</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="../../../../about" rel="external nofollow noreferrer">ROOT</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz">https://blog.bingfengs.xyz</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="../../../../about" target="_blank">ROOT</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="../../../../tags/%E7%BC%96%E7%A8%8B/">
+                                    <span class="chip bg-color">编程</span>
+                                </a>
+                            
+                                <a href="../../../../tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">
+                                    <span class="chip bg-color">自动化</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="../../../../libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="../../../../libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+        <div class="disqus-card card" data-aos="fade-up">
+    <div id="disqus_thread" class="card-content">
+        <noscript>Please enable JavaScript to view the
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+    </div>
+</div>
+
+<script type="text/javascript">
+    disqus_config = function () {
+        this.page.url = 'https://blog.bingfengs.xyz/2022/02/19/selenium/';
+        this.page.identifier = '';
+        this.page.title = 'Selenium';
+    };
+    let disqus_shortname = 'bingfeng';
+
+    (function () { // DON'T EDIT BELOW THIS LINE
+        let d = document, s = d.createElement('script');
+        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="../../../04/24/linux-cai-se-zhong-duan-pei-zhi/">
+                    <div class="card-image">
+                        
+                        <img src="../../../../medias/featureimages/56.jpg" class="responsive-img" alt="linux 彩色终端配置">
+                        
+                        <span class="card-title">linux 彩色终端配置</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            很久没有折腾了，最近要配置 Linux 实验环境，打算美化一下终端，提升效率
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-24
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="../../../../2021/12/14/ipv6/">
+                    <div class="card-image">
+                        
+                        <img src="../../../../medias/featureimages/54.jpg" class="responsive-img" alt="IPv6 基础">
+                        
+                        <span class="card-title">IPv6 基础</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            对一本书的总结，挑取里面重点做记录，其他没什么用！
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">网络</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="../../../../libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="../../../../libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            |&nbsp;Administrated by&nbsp;
+            <a href="../../../../about" target="_blank">ROOT</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+                <span id="icp"><img src="../../../../medias/icp.png"
+                                    style="vertical-align: text-bottom;"/>
+                <a href="../../../../https:/sekai.bingfengs.xyz:8443" target="_blank">备案，不存在的！</a>
+            </span>
+            
+            <br>
+            <br>
+            <span>苔痕上階綠，草色入簾青。談笑有鴻儒，往來無白丁。<br>
+                可以調素琴，閱金經。無絲竹之亂耳，無案牘之勞形。</span>
+            <br>
+            <br>
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('../../../../search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="../../../../libs/materialize/materialize.min.js"></script>
+    <script src="../../../../libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="../../../../libs/aos/aos.js"></script>
+    <script src="../../../../libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="../../../../libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="../../../../js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="../../../../libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="../../../../libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="../../../../libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="../../../../libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

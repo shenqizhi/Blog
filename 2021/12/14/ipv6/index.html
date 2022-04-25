@@ -1,0 +1,1098 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="IPv6 基础, 宅世界">
+    <meta name="description" content="对一本书的总结，挑取里面重点做记录，其他没什么用！">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8Z4B2QXXNF"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-8Z4B2QXXNF');
+</script>
+
+
+    <title>IPv6 基础 | 宅世界</title>
+    <link rel="icon" type="image/png" href="../../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../../libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../css/matery.css">
+    <link rel="stylesheet" type="text/css" href="../../../../css/my.css">
+
+    <script src="../../../../libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+   <style>
+    body{
+       background-image: url(/medias/1.png);
+       background-repeat:no-repeat;
+       background-size: 100% 100%;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="../../../../index.html" class="waves-effect waves-light">
+                    
+                    <img src="../../../../medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">宅世界</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../Other/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-vial" style="zoom: 0.6;"></i>
+      
+      <span>Lab</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../https:/sekai.bingfengs.xyz:8443" class="waves-effect waves-light">
+      
+      <i class="fas fa-globe" style="zoom: 0.6;"></i>
+      
+      <span>Sekai</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="../../../../medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">宅世界</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../Other/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-vial"></i>
+			
+			Lab
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../https:/sekai.bingfengs.xyz:8443" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-globe"></i>
+			
+			Sekai
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('../../../../medias/featureimages/54.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">IPv6 基础</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="../../../../libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="../../../../tags/%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">网络</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2021-12-14
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2021-12-14
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    2.7k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="../../../../libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="APNIC"><a href="#APNIC" class="headerlink" title="APNIC"></a>APNIC</h3><p>亚太互联网信息中心（Asia-Pacific Network Information Centre)</p>
+<p>全球五大区域性互联网注册管理机构之一，成立於1993年，负责亚太地区IP地址、ASN（自治系统号）的分配并管理一部分根域名服务器镜像。總部設於澳洲布里斯本。</p>
+<p>APNIC负责亚洲太平洋区域，包含56个经济體，分為東亞、南亞、東南亞、太平洋、中亞等五區，其中東亞區域包含中國大陸、北韓、香港、日本、澳門、蒙古、南韓及台灣</p>
+<h3 id="IP-地址"><a href="#IP-地址" class="headerlink" title="IP 地址"></a>IP 地址</h3><p>互联网协议地址（Internet Protocol Address）   </p>
+<h3 id="ICANN"><a href="#ICANN" class="headerlink" title="ICANN"></a>ICANN</h3><p>非营利性国际组织，Internet Corporation for Assigned Names and Numbers</p>
+<p>ICANN 将部分 IP 地址 和 AS 号码分配给洲际级的互联网注册机构（Regional Internet Registry，RIR），再由 RIR 负责该地区的 IP 地址和 AS 号码地址分配，登记注册。</p>
+<p>通常 RIR 会将地址进一步分配给区内大的 NIR/LIR，然后由它们进一步分配。   </p>
+<p><img src="ICANN.png" alt="IP 地址分配机构"></p>
+<p>中国情况：1997 年成立的<code>中国互联网络信息中心（CNNIC）</code> 属于中央网络安全和信息化委员会办公室直属事业单位，作为国家注册服务机构（NIR）行使国家互联网信息中心职责，是我国企事业单位首选的 IP 地址分配服务机构。</p>
+<p>同时，根据企事业自身情况，也可在 APNIC、CERNIC、CNISP、中国电信三大运营商等单位获取 IP 地址。</p>
+<h3 id="ISP-ICP-IDC"><a href="#ISP-ICP-IDC" class="headerlink" title="ISP ICP IDC"></a>ISP ICP IDC</h3><ul>
+<li><p>ISP<br>  互联网服务接入提供商（Internet Services Provider)<br>  ISP 向客户提供了网络接入等互联网增值业务。站在用户角度来说就似乎你把上网费交给了谁，谁就是 ISP。国内的 ISP 有：中国电信、中国移动、中国联通、塞尔网络、长城宽带、广电网络等</p>
+</li>
+<li><p>ICP<br>  互联网内容提供商（Internet Content Provider）<br>  ICP 向用户提供了各种各样的服务，例如查询、聊天、游戏、新闻、音乐、购物等。世界知名的 ICP 有亚马逊、腾讯、阿里巴巴、百度、京东等</p>
+</li>
+<li><p>IDC<br>  互联网数据中心服务商（Internet Data Center）<br>  IDC 向 ICP、企业和各类网站提供了大量的地址带宽资源以及相关服务，涉及服务器托管、空间租用、带宽接入服务等。IDC 要具备充足电力、建筑的高抗震承重性、恒温恒湿、光缆连通、24小时监控服务等。<br>  中国的 IDC 有中国电信、中国联通、中国移动、世纪互联、光环新网、鹏博士、中联数据等</p>
+<h3 id="others"><a href="#others" class="headerlink" title="others"></a>others</h3></li>
+</ul>
+<ul>
+<li><p>AS<br>  自治系统（Autonomous System）号码：独立网络的标识，能对网络进行自由的管理，过滤信息，控制网络流量，给使用单位更大的管理权限，是<code>一组 IP 地址的集合</code>，是<code>使用统一内部路由协议的一组网络</code>。如果成员单位的网络路由器准备采用 EGP（Exterior Gateway Protocol）、BGP（Border Gateway Protocol）或 IDRP（OSI Inter-Domain Routing Protocol），可以申请 AS 号码。<br>  简单地说，如果把 IP 比作门牌号，AS 号码就好比是门牌号所在的大街。AS 号码是一组 IP 地址集合的管理</p>
+</li>
+<li><p>物联网<br>  Internet of Things，IoT</p>
+</li>
+</ul>
+<ul>
+<li><p>内容分发网络<br>  Content Delivery Network，CDN。中国的 CDN 有三大基础电信运营商、网宿科技、蓝汛、阿里云、风行极客等。</p>
+</li>
+<li><p>IPv6 相关组织</p>
+<ul>
+<li>IETF   </li>
+<li>ICANN   </li>
+<li>IPv6 论坛（IPv6 Forum）   </li>
+<li>WIDE（Widely Integrated Distributed Environment）   </li>
+<li>3GPP（the 3rd Generation Partnership Project）   </li>
+<li>ITU-T</li>
+</ul>
+</li>
+<li><p>IPv6 地址分类</p>
+<ul>
+<li><p>单播地址<br>  Unicast Address。 IPv6 单播地址功能与 IPv4 地址一样受限于 CIDR，由两部分组成，一部分用来标识网络，一部分用来标识接口<br>  包含四种类型：</p>
+<ul>
+<li>全球单播地址<br>  <code>全球路由前缀 + 子网 ID + 接口 ID</code> 三部分组成<br>  全球路由前缀：global routing prefix，占 48 位，分配给各公司和机构<br>  子网 ID：subnet ID，这是二级地址，占 16 位，用于各公司和机构创建自己的子网<br>  接口 ID：interface ID，这是三级地址，占 64 位，用于指明主机或路由器单个网络接口，这在统一子网内是唯一的   </li>
+</ul>
+<ul>
+<li><p>本地单播地址<br>  类似 IPv4 地址中的局域网专用地址</p>
+</li>
+<li><p>兼容性地址<br>  现阶段，IPv4 与 IPv6 需要共存，在 IPv6 的传输机制中包含一项可以在 IPv4网络上传输的 IPv6 数据包的技术，这些路由器可以同时支持 IPv4 和 IPv6。如果要使用这项技术，就需要给 IPv6 的节点分配一个嵌入 IPv4 地址的 IPv6 地址，这被陈伟 IPv4 兼容地址。<br>  该地址前 80 位都是 0，第 <code>81~96</code> 位是 0000，最后 32 位是 IPv4 地址。 <code>这里使用的 IPv4 地址必须是全球唯一的 IPv4 单播地址</code><br>  还有一种和 IPv4 兼容地址很相似，也似乎嵌入 IPv4 地址的 IPv6 地址，叫做 IPv4 映射地址。它可以把 IPv4 地址映射为 IPv6 地址。只是格式上有些略微不同，第 <code>81~96 </code> 位是 <code>ffff</code></p>
+</li>
+<li><p>特殊地址<br>  包括未指定地址和环回地址。未指定地址（0:0:0:0:0:0:0:0 或 ::）仅用于表示某个地址<code>不存在</code>。等价于 IPv4 中的 <code>0.0.0.0</code><br>  环回地址（0:0:0:0:0:0:0:1 或 ::1），允许节点将数据包发送给自己。等价 IPv4 中的 127.0.0.1</p>
+</li>
+</ul>
+</li>
+<li><p>多播地址<br>  Multicast Address，也叫组播，多点广播或群播。<br>  以 <code>11111111</code> 开头，即 <code>ff</code> 为前缀，4b 的标志位，4b 的组播范围和 112b 的多播组标识符（组 ID）组成。例如：ff23::c156:67de:788b:cf9b   </p>
+<ul>
+<li><p>标志位<br>  其高 3b 位为 0，剩下的低 1b 位用于判断多播地址是 “永久性” 还是 “临时性”的。为 0 则是永久的</p>
+</li>
+<li><p>组播范围<br>  用于定义组播地址的范围类型</p>
+</li>
+</ul>
+</li>
+<li><p>任播地址<br>  Anycast Address，是一种网络寻址和路由的策略，使得数据可以根据路由拓扑来决定送到 “最近” 或 “最好” 的目的地，决定由路由选择协议确定。常使用 BGP 来实现任播</p>
+</li>
+</ul>
+</li>
+<li><p>路由协议 &amp; 可被路由协议<br>  路由协议（Routing Protocols）和 可被路由协议（Routed Protocols）是两个概念。例如，IP 数据报能被路由，因此，IP 协议是一个可被路由的协议</p>
+</li>
+<li><p>无状态地址自动配置协议 &amp; IPv6 动态主机配置协议<br>  IPv6 的自动配置中包含两种技术：<br>  一种是传统的有状态自动配置，典型代表就是与 IPv4 相对应的 <code>DHCPv6</code>；<br>  另一种是无状态的 IPv6 自动配置，典型的代表是 RADVD（路由广播守护（The Router Advertisement Daemon）。</p>
+<p>  在无状态地址自动配置技术中，网络接口接收路由器宣告的全局地址前缀，再结合接口 ID 得到一个可聚集全局单播地址。以 RADVD 为代表的无状态自动配置不需要消耗很多机器资源，也不像传统 DHCP 一样需要维护一个本地数据库来维护地址分配状态，它只是<code>广播前缀地址</code>，客户端收到这种广播后再自己使用 EUI64 算法生成全球唯一 IPv6 地址，进行自我配置。因此 RADVD 不能进行 NTP/DNS（DNS 存疑） 等其他传统 DHCP 服务器所能进行的配置。甚至严格地说，它只进行路由广播，地址都是很客户端自己根据算法和规范进行配置。</p>
+<p>  在有状态地址自动配置技术下，通过采用动态主机配置协议，需要配备专门的 DHCP 服务器，网络接口通过客户端/服务器模式从 DHCP 服务器得到地址配置信息。如果希望为客户端指定更加详细的 DNS 设定，NTP 设定，可以考虑 DHCPv6 + RADVD（stateless）</p>
+</li>
+</ul>
+<ul>
+<li><p>常用的 IPv6 路由协议</p>
+<ul>
+<li><p>RIPng<br>  Routing Information Protocol next generation， RIP 协议下一代。</p>
+</li>
+<li><p>OSPFv3<br>  是专门为 IPv6 设计的，是一种链路状态的路由协议。</p>
+</li>
+<li><p>IS-ISv6<br>  Intermediate System-to-Intermediate System, 中间系统到中间系统</p>
+</li>
+<li><p>BGP4+<br>  为了使 BGP4（Border Gateway Protocol 4）能够支持 IPv6 等多种网络层协议，BGP4 进行了扩展即 BGP4+。<br>  RIPng 和 OSPFv3 协议都是在一个自治系统内部使用，与这两个协议不同，BGP4+ 协议被设计在多个自治系统之间进行路由信息交换</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="过渡技术"><a href="#过渡技术" class="headerlink" title="过渡技术"></a>过渡技术</h2><ul>
+<li><p>双栈技术<br>  指在网络节点上同时运行 IPv4 和 IPv6 两种协议，从而在 IP 网络中形成逻辑上相互独立的两个网络。源地址根据要访问的目的地址的类型，自动选取 IPv4 协议或 IPv6 协议。网络设备则更具网络数据包的协议头类型来选择不同的协议栈进行存储转发。<code>双协议栈实现了 IPv4 和 IPv6 网络共存的问题，但解决不了两者互通的问题，并且双协议栈也无法节约 IPv4 地址</code></p>
+</li>
+<li><p>隧道技术   </p>
+<ul>
+<li>6PE<br>  基于 MPLS 的隧道技术，核心思想是借助成熟的 BGP MPLS VPN 技术平台实现在启用 MPLS 的 IPv4 骨干网上传输 IPv6 数据报文。</li>
+<li>6VPE</li>
+<li>6over4</li>
+<li>DS-lite</li>
+</ul>
+</li>
+<li><p>翻译技术（IPv4/IPv6 协议转换技术）</p>
+<ul>
+<li><p>NAT64<br>  NAT64 是有状态的<code>网络层</code>协议翻译技术。为实现 IPv4 网络和 IPv6 网络的互通，需要将 IPv4 地址和端口号与 IPv6 地址和端口号奖励地址映射表。IVI 和 NAT64 的提出实际上是用于替代 NAT-PT。但由于 IVI 的翻译是一对一的，一个 IPv4 地址转换为一个 IPv6 地址，需要耗费较多 IPv4 地址，而 NAT64 却拥有一个地址池，能够使多个 IPv6 地址对应于一个 IPv4 地址。</p>
+<p>  NAT64 支持 NAT64 的双栈路由器部署在 IPv4 网络和 IPv6 网络的边界上。一个接口运行的是 IPv6，另一个接口上运行的是 IPv4。NAT64 模块将 IPv6 数据报文翻译成 IPv4 数据报文，当流量返回时，模块又根据地址映射表将 IPv4 数据报文翻译成 IPv6 数据报文，使得 IPv4 和 IPv6 节点之间能相互访问</p>
+</li>
+<li><p>464XLAT</p>
+</li>
+<li><p>6RD</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>IPv6 过渡技术总体上可以分为隧道，翻译两个大类。隧道技术采用的是一种协议封装于另外一种协议的方式，他只要求升级隧道的入口和出口设备。但隧道端点需要封装/解封装，转发效率低，也无法实现 IPv4 和 IPv6 的互访。</p>
+<p>3 种翻译技术中， NAT64 支持场景较小，只能实现 IPv6 主机到 IPv4 服务器的单向访问</p>
+<p>未完待续</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="../../../../about" rel="external nofollow noreferrer">ROOT</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz">https://blog.bingfengs.xyz</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="../../../../about" target="_blank">ROOT</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="../../../../tags/%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">网络</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="../../../../libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="../../../../libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+        <div class="disqus-card card" data-aos="fade-up">
+    <div id="disqus_thread" class="card-content">
+        <noscript>Please enable JavaScript to view the
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+    </div>
+</div>
+
+<script type="text/javascript">
+    disqus_config = function () {
+        this.page.url = 'https://blog.bingfengs.xyz/2021/12/14/ipv6/';
+        this.page.identifier = '';
+        this.page.title = 'IPv6 基础';
+    };
+    let disqus_shortname = 'bingfeng';
+
+    (function () { // DON'T EDIT BELOW THIS LINE
+        let d = document, s = d.createElement('script');
+        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="../../../../2022/02/19/selenium/">
+                    <div class="card-image">
+                        
+                        <img src="../../../../medias/featureimages/55.jpg" class="responsive-img" alt="Selenium">
+                        
+                        <span class="card-title">Selenium</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Selenium 的简单介绍，基于 Python
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-19
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">编程</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">
+                        <span class="chip bg-color">自动化</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="../fiddler/">
+                    <div class="card-image">
+                        
+                        <img src="../../../../medias/featureimages/53.jpg" class="responsive-img" alt="Fiddler 入门">
+                        
+                        <span class="card-title">Fiddler 入门</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            电脑环境丢失的一个多月，身体日渐憔悴，现在恢复了，抓紧更！
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/%E6%8A%93%E5%8C%85/">
+                        <span class="chip bg-color">抓包</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="../../../../libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="../../../../libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            |&nbsp;Administrated by&nbsp;
+            <a href="../../../../about" target="_blank">ROOT</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+                <span id="icp"><img src="../../../../medias/icp.png"
+                                    style="vertical-align: text-bottom;"/>
+                <a href="../../../../https:/sekai.bingfengs.xyz:8443" target="_blank">备案，不存在的！</a>
+            </span>
+            
+            <br>
+            <br>
+            <span>苔痕上階綠，草色入簾青。談笑有鴻儒，往來無白丁。<br>
+                可以調素琴，閱金經。無絲竹之亂耳，無案牘之勞形。</span>
+            <br>
+            <br>
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('../../../../search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="../../../../libs/materialize/materialize.min.js"></script>
+    <script src="../../../../libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="../../../../libs/aos/aos.js"></script>
+    <script src="../../../../libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="../../../../libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="../../../../js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="../../../../libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="../../../../libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="../../../../libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="../../../../libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

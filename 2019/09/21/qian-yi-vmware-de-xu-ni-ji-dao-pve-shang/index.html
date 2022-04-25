@@ -1,0 +1,1140 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="迁移VMware的虚拟机到PVE上, 宅世界">
+    <meta name="description" content="现在要更换生产环境，将Vmware里面的虚拟机（大部分是Windows虚拟机）迁移到PVE上。这里总结了一些方法">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8Z4B2QXXNF"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-8Z4B2QXXNF');
+</script>
+
+
+    <title>迁移VMware的虚拟机到PVE上 | 宅世界</title>
+    <link rel="icon" type="image/png" href="../../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../../libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../css/matery.css">
+    <link rel="stylesheet" type="text/css" href="../../../../css/my.css">
+
+    <script src="../../../../libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+   <style>
+    body{
+       background-image: url(/medias/1.png);
+       background-repeat:no-repeat;
+       background-size: 100% 100%;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="../../../../index.html" class="waves-effect waves-light">
+                    
+                    <img src="../../../../medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">宅世界</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../Other/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-vial" style="zoom: 0.6;"></i>
+      
+      <span>Lab</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../https:/sekai.bingfengs.xyz:8443" class="waves-effect waves-light">
+      
+      <i class="fas fa-globe" style="zoom: 0.6;"></i>
+      
+      <span>Sekai</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="../../../../medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">宅世界</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../Other/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-vial"></i>
+			
+			Lab
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../https:/sekai.bingfengs.xyz:8443" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-globe"></i>
+			
+			Sekai
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('../../../../medias/featureimages/29.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">迁移VMware的虚拟机到PVE上</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="../../../../libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="../../../../tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                            <a href="../../../../tags/PVE/">
+                                <span class="chip bg-color">PVE</span>
+                            </a>
+                        
+                            <a href="../../../../tags/%E8%99%9A%E6%8B%9F%E5%8C%96/">
+                                <span class="chip bg-color">虚拟化</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2019-09-21
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2020-02-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    1.9k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="../../../../libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><strong>重要：优先选择再生龙的迁移方式，这个是离线迁移，能保证迁移前后数据的一致性。而且能在PVE上事先创建硬盘，相比其他方案，后续不容易出现兼容问题</strong></p>
+<hr>
+<p>首先，下载如下两个软件软件</p>
+<p><img src="pics/1.png"></p>
+<p>第一个是加载一个IDE磁盘的注册表，貌似不用的话，导入到PVE后，虚拟机启动不起来<br>第二个是Vmware官方出品的转移软件，能实现在线和离线转移</p>
+<p><img src="pics/9.png"></p>
+<p>这个是再生龙的光盘，挂载在虚拟机上面，然后选择从光盘启动就可以了</p>
+<h2 id="在线迁移"><a href="#在线迁移" class="headerlink" title="在线迁移"></a>在线迁移</h2><h3 id="VM虚拟机操作部分"><a href="#VM虚拟机操作部分" class="headerlink" title="VM虚拟机操作部分"></a>VM虚拟机操作部分</h3><p>在不关闭VMware虚拟机的情况下，实现转移。<strong>但是该方案有缺点，不能确保数据的一致性</strong></p>
+<p>首先，在<strong>虚拟机</strong>运行压缩包里面的“mergeide.reg”，导入注册表</p>
+<p>迁移软件安装在你需要迁移的虚拟机上面，不是主机</p>
+<p><img src="pics/2.png"></p>
+<p>安装后<strong>以管理员身份</strong>打开，点击“Convert Machine”</p>
+<p><img src="pics/3.png"></p>
+<p>按照下图操作，可以点击“View source details…” 验证连接情况</p>
+<p><img src="pics/4.png"></p>
+<p>按照如图选择，需要注意：</p>
+<ul>
+<li>位置2，版本一开始不需要选择太高，如果选择到12x，转移后，开启proxmox虚拟机，windows可能会蓝屏。（我测试是这样的，有空各位试试看是否也有这样的情况）</li>
+<li>位置3，可以随意起一个英文名</li>
+<li>位置4， 必须是U盘或网络位置，不要存放在本地的硬盘里</li>
+</ul>
+<p><img src="pics/5.png"></p>
+<p>之后一直下一步，知道向导完成。然后等待导出</p>
+<p>导出结束后，在你指定的位置查看文件，我们需要的，是那个容量大的vmdk文件</p>
+<p><img src="pics/6.png"></p>
+<p>接下来，我们要把这个vmdk文件丢到PVE服务器能读到的地方，这里我创建了一个NFS服务器，你可以直接拿u盘连接PVE挂载，也可以使用winscp这个神器来上传文件</p>
+<h3 id="Proxmox操作部分"><a href="#Proxmox操作部分" class="headerlink" title="Proxmox操作部分"></a>Proxmox操作部分</h3><p>首先，我们在proxmox创建一个虚拟机，尽量硬件信息跟迁移的机器的配置一样。硬盘这部分的参数需要特别注意，如果你配置迁移后，发现启动不了，或者蓝屏，很大原因是因为硬盘配置有问题</p>
+<p><img src="pics/7.png"></p>
+<ul>
+<li>位置1：我这里选择IDE（折腾几次都蓝屏了，不想搞了）后面如果发现性能有问题，可以试试用别的模式</li>
+<li>位置2：选择一个存储位置，注意，不要选择local-lvm这个地点，不然后面系统启动不了（连硬盘都识别不到），目前不知道原因</li>
+<li>位置3：选择qcow2</li>
+</ul>
+<p>我们将刚才的vmdk文件上传，无论上传到NFS之类的服务器，还有PVE实体机本身，要确保PVE本身可以读写。之后，进入PVE实体机的shell</p>
+<blockquote>
+<p>qemu-img convert -f vmdk /?/?/…/<em>.vmdk -O qcow2 /var/lib/vz/images/100/</em>.qcow2</p>
+</blockquote>
+<p>上面 /?/?…/*.vmdk 是你上传vmdk的位置<br>/var/lib/vz/images  是proxmox默认的镜像文件位置（非LVM），你也可以根据你的文件的路径来。100 是你创建虚拟机的VMID号</p>
+<p>转换后，编辑VM的配置文件</p>
+<blockquote>
+<p>vim /etc/pve/local/qemu-server/100.conf</p>
+</blockquote>
+<p>在ide0的行中：我们要将vm-100-disk-1.raw，size = 32G更改为windows-server.qcow2</p>
+<p>然后我们移除原来的空磁盘</p>
+<p>rm /var/lib/vz/images/100/vm-100-disk-1.raw</p>
+<p>然后就可以开启虚拟机看看，如果启动蓝屏或者启动不了，google一下</p>
+<br>
+
+
+<p><em>附加教程(我参考的资料）</em></p>
+<p>这个是官网的教程，可以参考里面的 “Physical (running) Windows server to Proxmox VE (KVM) using VMware Converter” 这一个章节</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://pve.proxmox.com/wiki/Migration_of_servers_to_Proxmox_VE">https://pve.proxmox.com/wiki/Migration_of_servers_to_Proxmox_VE</a></p>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://chuansongme.com/n/652461651234">https://chuansongme.com/n/652461651234</a></p>
+</blockquote>
+<h2 id="离线迁移"><a href="#离线迁移" class="headerlink" title="离线迁移"></a>离线迁移</h2><h3 id="再生龙"><a href="#再生龙" class="headerlink" title="再生龙"></a>再生龙</h3><p>首推再生龙，这个是一个开源的软件，对中文支持很好，PVE官网也有它的教程</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.51cto.com/yuweibing/2334783">https://blog.51cto.com/yuweibing/2334783</a></p>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://leooo48.github.io/2018/07/13/clonezila/">https://leooo48.github.io/2018/07/13/clonezila/</a></p>
+</blockquote>
+<p>使用过程中，要注意如下事项：</p>
+<ul>
+<li><p>切记，一定要先导入IDE的注册表，不然蓝屏，启动不了的问题会让你欲哭无泪。。。。</p>
+</li>
+<li><p>pve创建虚拟机默认是SeaBIOS，是传统的启动模式，如果你迁移过来的虚拟机是UEFI启动的，一定要更改一下它的BIOS（在硬件那里修改为UEFI）</p>
+</li>
+</ul>
+<p><img src="pics/8.png"></p>
+<ul>
+<li><p>配置完服务端要ping一下服务器，看一下网络是否通顺</p>
+</li>
+<li><p>客户端需要输入的就两条命令 </p>
+<blockquote>
+<p>sudo ocs-live-netcfg</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>sudo ocs-onthefly -s 10.0.77.171 -t sda  /// -s 后面接服务端的ip ，-t后面接需要靠边数据的磁盘，可以在客户机里面用命令lsblk命令查看</p>
+</blockquote>
+<hr>
+<p>以下是官方的说明文档：</p>
+<p>This method is fast, reliable and OS independent as it uses live cds.</p>
+<ul>
+<li>Get a live linux cd like CloneZilla.</li>
+<li>Prepare the source host, make sure that you have standard IDE drivers enabled (for WinXP/Win2003 use the mergeide.reg (File:Mergeide.zip) ), for W2k I followed this link (solution 2 worked for me): [2]</li>
+<li>Now, boot the physical host with Clonezilla, go for beginner mode and select device - device and then remote, just follow the wizard</li>
+<li>On the Proxmox VE host, prepare a KVM guest, make sure you got a big enough IDE disk assigned (add 1 GB extra to be on the safe side) and also boot this KVM guest with the live cd and execute a shell.</li>
+<li>Become root and run fdisk (fdisk /dev/sda/) to make sure that sda is here, exit fdisk with ‘w’. this was essential.</li>
+<li>Now enter all commands from the wizard on the source server tells you (configure network and request the copy process)</li>
+<li>After success (the wizard just copies the data, means I got a 80 GB disk but only 5 GB data on it so it was just a few minutes for the whole process on a gigabit network) just change the boot device to the hard disk and start the VM. Windows will install all needed drivers automatically, just the Intel NIC drivers for e1000 must be loaded from ISO (I got one big driver ISO from Intel containing all NIC drivers).</li>
+</ul>
+<h3 id="VMware-converter"><a href="#VMware-converter" class="headerlink" title="VMware converter"></a>VMware converter</h3><h2 id="其他的参考"><a href="#其他的参考" class="headerlink" title="其他的参考"></a>其他的参考</h2><p>这个链接有一个命令很有用 ： qm importdisk <vmid> <source> <storage>。有兴趣可以看看全文</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://everun.top/helpcenter/others/pve-ow-7.html">http://everun.top/helpcenter/others/pve-ow-7.html</a></p>
+</blockquote>
+<br>
+
+
+<p>转移之后蓝屏，无限重启问题</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/38275419">https://zhuanlan.zhihu.com/p/38275419</a></p>
+</blockquote>
+<br>
+
+
+<p>再生龙的其他用法及介绍</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/enweitech/article/details/48173713">https://blog.csdn.net/enweitech/article/details/48173713</a></p>
+</blockquote>
+<br>
+
+<p>这个windows 加载 virtio 总线的驱动，我也不知道有什么用，这里记录备用</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://my.oschina.net/xintq/blog/92947">https://my.oschina.net/xintq/blog/92947</a></p>
+</blockquote>
+<br>
+
+<p>这个遇到的情况和我很像，特此记录</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_53ab41fd01013ksq.html">http://blog.sina.com.cn/s/blog_53ab41fd01013ksq.html</a></p>
+</blockquote>
+<ol>
+<li>无论是Windows系统或Linux系统，在KVM虚拟机设置时尽量设置硬盘为IDE，设成SCSI时会有问题。我在RedHat AS3 迁移中，发现IDE可以顺利转移(使用CloneZilla)，只需把/etc/fstab中原来/dev/sdax 更改为/dev/hdax。使用SCSI硬盘时，出现Kernel Panic错误</li>
+</ol>
+<p>2.在Windows系统转移前，应当先执行mergeide.reg (查看微软的 KB 公告）以允许IDE接口，不然就会出现0x0000007B的蓝屏错误。但在实际迁移中，使用VMware 免费的工具Convert转移的vmdk文件再转换成qcow2文件后(具体方法参见Proxmox的wiki文档)，重启仍然蓝屏，最后只能使用windows系统盘修复安装以恢复错误(2003R2)。但是使用CloneZilla转换的Image文件恢复后，可以正常启动(只做过win2000服务器)。</p>
+<p>LVM Thin Storage is much more stable then the qcow2. One thing are the snapshots. For example you have an machine with 50GB of memory und you make an Livesnapshot with qcow2 sometimes you will get an error. When not on creation then really on delete. The second thing. Raw is an nice generic format, like DD. You can do everything with, without convert… And it have better performance then qcow2.</p>
+<p>local-lvm 这个区域只支持 raw 格式</p>
+<p>/etc/pve/storage.cfg<br>这个文件是各个区域的配置文件，可以参考下方的连接</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://forum.proxmox.com/threads/disk-image-option-greyed-out-only-raw-availble.27943/">https://forum.proxmox.com/threads/disk-image-option-greyed-out-only-raw-availble.27943/</a></p>
+</blockquote>
+<p><strong>在创建硬盘的时候， Bus/Device 这个选项要尽量避免选择VirtIO Block和SCSI这个选项，不然系统识别不到硬盘，可以选择Sata</strong></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="../../../../about" rel="external nofollow noreferrer">ROOT</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz">https://blog.bingfengs.xyz</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="../../../../about" target="_blank">ROOT</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="../../../../tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="../../../../tags/PVE/">
+                                    <span class="chip bg-color">PVE</span>
+                                </a>
+                            
+                                <a href="../../../../tags/%E8%99%9A%E6%8B%9F%E5%8C%96/">
+                                    <span class="chip bg-color">虚拟化</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="../../../../libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="../../../../libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+        <div class="disqus-card card" data-aos="fade-up">
+    <div id="disqus_thread" class="card-content">
+        <noscript>Please enable JavaScript to view the
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+    </div>
+</div>
+
+<script type="text/javascript">
+    disqus_config = function () {
+        this.page.url = 'https://blog.bingfengs.xyz/2019/09/21/qian-yi-vmware-de-xu-ni-ji-dao-pve-shang/';
+        this.page.identifier = '';
+        this.page.title = '迁移VMware的虚拟机到PVE上';
+    };
+    let disqus_shortname = 'bingfeng';
+
+    (function () { // DON'T EDIT BELOW THIS LINE
+        let d = document, s = d.createElement('script');
+        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="../zheng-ze-biao-da-shi-bi-ji/">
+                    <div class="card-image">
+                        
+                        <img src="../../../../medias/featureimages/25.jpg" class="responsive-img" alt="正则表达式笔记">
+                        
+                        <span class="card-title">正则表达式笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            总结一下正则表达式的使用方法
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-09-21
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">编程</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="../raid6-da-jian-cun-chu-huan-jing/">
+                    <div class="card-image">
+                        
+                        <img src="../../../../medias/featureimages/13.jpg" class="responsive-img" alt="Raid6 搭建存储环境">
+                        
+                        <span class="card-title">Raid6 搭建存储环境</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            接上一个教程，重新部署磁盘存储环境
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="../../../../tags/Raid/">
+                        <span class="chip bg-color">Raid</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="../../../../libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="../../../../libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            |&nbsp;Administrated by&nbsp;
+            <a href="../../../../about" target="_blank">ROOT</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+                <span id="icp"><img src="../../../../medias/icp.png"
+                                    style="vertical-align: text-bottom;"/>
+                <a href="../../../../https:/sekai.bingfengs.xyz:8443" target="_blank">备案，不存在的！</a>
+            </span>
+            
+            <br>
+            <br>
+            <span>苔痕上階綠，草色入簾青。談笑有鴻儒，往來無白丁。<br>
+                可以調素琴，閱金經。無絲竹之亂耳，無案牘之勞形。</span>
+            <br>
+            <br>
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('../../../../search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="../../../../libs/materialize/materialize.min.js"></script>
+    <script src="../../../../libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="../../../../libs/aos/aos.js"></script>
+    <script src="../../../../libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="../../../../libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="../../../../js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="../../../../libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="../../../../libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="../../../../libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="../../../../libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

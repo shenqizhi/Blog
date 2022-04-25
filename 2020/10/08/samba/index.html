@@ -1,0 +1,1329 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Samba, 宅世界">
+    <meta name="description" content="好久没有写文章了，这个是我前几天踩到的一个巨坑，所以先把Samba的基本用法看了一遍，方便下次自己用。">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8Z4B2QXXNF"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-8Z4B2QXXNF');
+</script>
+
+
+    <title>Samba | 宅世界</title>
+    <link rel="icon" type="image/png" href="../../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../../libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../css/matery.css">
+    <link rel="stylesheet" type="text/css" href="../../../../css/my.css">
+
+    <script src="../../../../libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+   <style>
+    body{
+       background-image: url(/medias/1.png);
+       background-repeat:no-repeat;
+       background-size: 100% 100%;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="../../../../index.html" class="waves-effect waves-light">
+                    
+                    <img src="../../../../medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">宅世界</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../Other/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-vial" style="zoom: 0.6;"></i>
+      
+      <span>Lab</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../https:/sekai.bingfengs.xyz:8443" class="waves-effect waves-light">
+      
+      <i class="fas fa-globe" style="zoom: 0.6;"></i>
+      
+      <span>Sekai</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="../../../../medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">宅世界</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../Other/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-vial"></i>
+			
+			Lab
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../https:/sekai.bingfengs.xyz:8443" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-globe"></i>
+			
+			Sekai
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('../../../../medias/featureimages/39.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Samba</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="../../../../libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="../../../../tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                            <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">笔记</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2020-10-08
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2020-10-14
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    2.8k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="../../../../libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>现在问题还没有解决，只用了临时的配置顶用先。</p>
+<p>参考文章：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://cshihong.github.io/2018/10/18/Samba%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%8E%E9%85%8D%E7%BD%AE/">https://cshihong.github.io/2018/10/18/Samba%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%8E%E9%85%8D%E7%BD%AE/</a></p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">[global] #全局参数。
+        workgroup &#x3D;MYGROUP   
+        #设定Samba Server所要加入的工作组或域
+        security &#x3D; user
+		#安装验证方式，总共有四种
+        passdb backend &#x3D; tdbsam
+        #定义用户后台类型，总共有三种
+        printing &#x3D; cups
+        printcap name &#x3D; cups
+        load printers &#x3D; yes
+        #设置在Samba服务启动时是否共享打印机设备
+        cups options &#x3D; raw
+        #打印机的选项
+
+[homes]
+        comment &#x3D; Home Directories #描述信息
+        valid users &#x3D; %S, %D%w%S  #有效访问用户
+        path &#x3D; ~         #文件路径
+        browseable &#x3D; No   #指定共享信息是否在“网上邻居”中可见
+        read only &#x3D; No    #是否只读
+        inherit acls &#x3D; Yes 
+
+[printers]
+        comment &#x3D; All Printers
+        path &#x3D; &#x2F;var&#x2F;tmp #共享文件的实际路径。
+        printable &#x3D; Yes
+        create mask &#x3D; 0600
+        browseable &#x3D; No
+
+[print$]
+        comment &#x3D; Printer Drivers
+        path &#x3D; &#x2F;var&#x2F;lib&#x2F;samba&#x2F;drivers
+        write list &#x3D; root
+        create mask &#x3D; 0664
+        directory mask &#x3D; 0775<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">server string &#x3D; samVer %v  #可以不填， %v 表示显示 Samba 的版本号
+
+netbios name &#x3D; sambaServer #samba 服务器的名称
+
+interfaces &#x3D; lo eth0 192.168.12.2&#x2F;24 192.168.13.2&#x2F;24 # 设置samba监听那些网卡，可以写网卡名，也可以是IP地址
+
+hosts allow &#x3D; 127.193.168.1 192.168.10.1 #多个参数空格隔开，可以一个IP，或整个网段
+hosts allow &#x3D; 172.17.2.0&#x2F;255.255.0.0 #整个网段
+hosts allow &#x3D; @example.com
+
+log file &#x3D; &#x2F;var&#x2F;log&#x2F;samba&#x2F;log.%m # %m 表示主机名，表示对每台访问Samba
+Server的机器都单独记录一个日志文件。如果pc1、pc2访问过Samba
+Server，就会在&#x2F;var&#x2F;log&#x2F;samba目录下留下log.pc1和log.pc2两个日志文件。
+
+max log size &#x3D; 50 #单位KB，0表示不限制
+
+secruity &#x3D; user #验证方式，四种
+# - share: 不需要提供用户名和口令，已弃用
+# - user: 共享目录只能被授权用户访问，由Samba Server负责检查账号和密码的正确性。账号和密码要在本Samba Server中建立
+# - server: 依靠其他Windows NT&#x2F;2000或Samba
+Server来验证用户的账号和密码,是一种代理验证。此种安全模式下,系统管理员可以把所有的Windows用户和口令集中到一个NT系统上,使用 Windows NT进行Samba认证, 远程服务器可以自动认证全部用户和口令,如果认证失败,Samba将使用用户级安全模式作为替代的方式
+# - domain: 域安全级别,使用主域控制器(PDC)来完成认证。
+
+passdb backend &#x3D; tdbsam #passdb backend就是用户后台的意思.目前有三种后台：smbpasswd、tdbsam和ldapsam。sam应该是security account manager（安全账户管理）的简写
+
+# - smbpasswd: 过时
+# - tdbsam: 该方式则是使用一个数据库文件来建立用户数据库。数据库文件叫passdb.tdb，默认在&#x2F;etc&#x2F;samba目录下. 可以使用  pdbedit 命令来建立Samba账户
+
+    pdbedit –a username：新建Samba账户
+    pdbedit –x username：删除Samba账户。
+    pdbedit –L：列出Samba用户列表，读取passdb.tdb数据库文件。
+    pdbedit –Lv：列出Samba用户列表的详细信息。
+
+# - ldapsam：该方式则是基于LDAP的账户管理方式来验证用户。首先要建立LDAP服务，然后设置“passdb backend &#x3D; ldapsam:ldap:&#x2F;&#x2F;LDAP Server  
+
+
+encrypt passwords &#x3D; yes&#x2F;no #说明：是否将认证密码加密。因为现在windows操作系统都是使用加密密码，所以一般要开启此项。不过配置文件默认已开启。
+
+username map &#x3D; &#x2F;etc&#x2F;samba&#x2F;smbusers #说明：用来定义用户名映射，比如可以将root换成administrator、admin等。不过要事先在smbusers文件中定义好。比如：root &#x3D; administrator admin，这样就可以用administrator或admin这两个用户来代替root登陆Samba Server，更贴近windows用户的习惯。
+
+guest account &#x3D; nobody # 设置guest用户名
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">[共享名]
+    comment &#x3D; anyComment
+    path &#x3D; &#x2F;home&#x2F;share
+    browseable &#x3D; yes&#x2F;no  #browseable用来指定该共享是否可以浏览
+    writable &#x3D; yes&#x2F;no #writable用来指定该共享路径是否可写
+    available &#x3D; yes&#x2F;no #available用来指定该共享资源是否可用
+    admin users &#x3D;  #该共享的管理者,多个用户或者组中间用逗号隔开
+    valid users &#x3D; #许访问该共享资源的用户
+    invalid users &#x3D; #禁止访问该共享的用户
+    public &#x3D; yes&#x2F;no #public用来指定该共享是否允许guest账户访问
+    guest ok &#x3D; yes&#x2F;no #同public
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>修改samba密码<br><code>smbpasswd 用户名</code></p>
+<h2 id="manjaro-上的问题"><a href="#manjaro-上的问题" class="headerlink" title="manjaro 上的问题"></a>manjaro 上的问题</h2><p>我添加了一个新的User，但是在Windows上用这个账户一直提示无权限，只有用回Manjaro初始的第一个账号才可以。我已经把新的用户帐号添加进系统初始帐号的组里，还是一样报错。</p>
+<p>我的是 NTFS 的外挂磁盘，不知是不是这个原因，还是Manjaro系统本身的问题？</p>
+<h2 id="smb-conf-配置文件"><a href="#smb-conf-配置文件" class="headerlink" title="smb.conf 配置文件"></a>smb.conf 配置文件</h2><p>留个样板，方便以后使用</p>
+<pre class="line-numbers language-none"><code class="language-none"># This is the main Samba configuration file. You should read the
+# smb.conf(5) manual page in order to understand the options listed
+# here. Samba has a huge number of configurable options (perhaps too
+# many!) most of which are not shown in this example
+#
+# For a step to step guide on installing, configuring and using samba, 
+# read the Samba-HOWTO-Collection. This may be obtained from:
+#  http:&#x2F;&#x2F;www.samba.org&#x2F;samba&#x2F;docs&#x2F;Samba-HOWTO-Collection.pdf
+#
+# Many working examples of smb.conf files can be found in the 
+# Samba-Guide which is generated daily and can be downloaded from: 
+#  http:&#x2F;&#x2F;www.samba.org&#x2F;samba&#x2F;docs&#x2F;Samba-Guide.pdf
+#
+# Any line which starts with a ; (semi-colon) or a # (hash) 
+# is a comment and is ignored. In this example we will use a #
+# for commentry and a ; for parts of the config file that you
+# may wish to enable
+#
+# NOTE: Whenever you modify this file you should run the command &quot;testparm&quot;
+# to check that you have not made any basic syntactic errors. 
+#
+#&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; Global Settings &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+[global]
+
+# workgroup &#x3D; NT-Domain-Name or Workgroup-Name, eg: MIDEARTH
+   workgroup &#x3D; workgroup
+
+# server string is the equivalent of the NT Description field
+   server string &#x3D; Samba Server
+
+# Server role. Defines in which mode Samba will operate. Possible
+# values are &quot;standalone server&quot;, &quot;member server&quot;, &quot;classic primary
+# domain controller&quot;, &quot;classic backup domain controller&quot;, &quot;active
+# directory domain controller&quot;.
+#
+# Most people will want &quot;standalone server&quot; or &quot;member server&quot;.
+# Running as &quot;active directory domain controller&quot; will require first
+# running &quot;samba-tool domain provision&quot; to wipe databases and create a
+# new domain.
+   server role &#x3D; standalone server
+
+# This option is important for security. It allows you to restrict
+# connections to machines which are on your local network. The
+# following example restricts access to two C class networks and
+# the &quot;loopback&quot; interface. For more examples of the syntax see
+# the smb.conf man page
+;   hosts allow &#x3D; 192.168.1. 192.168.2. 127.
+
+# Uncomment this if you want a guest account, you must add this to &#x2F;etc&#x2F;passwd
+# otherwise the user &quot;nobody&quot; is used
+;  guest account &#x3D; pcguest
+
+# this tells Samba to use a separate log file for each machine
+# that connects
+   log file &#x3D; &#x2F;usr&#x2F;local&#x2F;samba&#x2F;var&#x2F;log.%m
+
+# Put a capping on the size of the log files (in Kb).
+   max log size &#x3D; 50
+
+# Specifies the Kerberos or Active Directory realm the host is part of
+;   realm &#x3D; MY_REALM
+
+# Backend to store user information in. New installations should 
+# use either tdbsam or ldapsam. smbpasswd is available for backwards 
+# compatibility. tdbsam requires no further configuration.
+;   passdb backend &#x3D; tdbsam
+
+# Using the following line enables you to customise your configuration
+# on a per machine basis. The %m gets replaced with the netbios name
+# of the machine that is connecting.
+# Note: Consider carefully the location in the configuration file of
+#       this line.  The included file is read at that point.
+;   include &#x3D; &#x2F;usr&#x2F;local&#x2F;samba&#x2F;lib&#x2F;smb.conf.%m
+
+# Configure Samba to use multiple interfaces
+# If you have multiple network interfaces then you must list them
+# here. See the man page for details.
+;   interfaces &#x3D; 192.168.12.2&#x2F;24 192.168.13.2&#x2F;24 
+
+# Where to store roving profiles (only for Win95 and WinNT)
+#        %L substitutes for this servers netbios name, %U is username
+#        You must uncomment the [Profiles] share below
+;   logon path &#x3D; \\%L\Profiles\%U
+
+# Windows Internet Name Serving Support Section:
+# WINS Support - Tells the NMBD component of Samba to enable it&#39;s WINS Server
+;   wins support &#x3D; yes
+
+# WINS Server - Tells the NMBD components of Samba to be a WINS Client
+#	Note: Samba can be either a WINS Server, or a WINS Client, but NOT both
+;   wins server &#x3D; w.x.y.z
+
+# WINS Proxy - Tells Samba to answer name resolution queries on
+# behalf of a non WINS capable client, for this to work there must be
+# at least one	WINS Server on the network. The default is NO.
+;   wins proxy &#x3D; yes
+
+# DNS Proxy - tells Samba whether or not to try to resolve NetBIOS names
+# via DNS nslookups. The default is NO.
+   dns proxy &#x3D; no 
+
+# These scripts are used on a domain controller or stand-alone 
+# machine to add or delete corresponding unix accounts
+;  add user script &#x3D; &#x2F;usr&#x2F;sbin&#x2F;useradd %u
+;  add group script &#x3D; &#x2F;usr&#x2F;sbin&#x2F;groupadd %g
+;  add machine script &#x3D; &#x2F;usr&#x2F;sbin&#x2F;adduser -n -g machines -c Machine -d &#x2F;dev&#x2F;null -s &#x2F;bin&#x2F;false %u
+;  delete user script &#x3D; &#x2F;usr&#x2F;sbin&#x2F;userdel %u
+;  delete user from group script &#x3D; &#x2F;usr&#x2F;sbin&#x2F;deluser %u %g
+;  delete group script &#x3D; &#x2F;usr&#x2F;sbin&#x2F;groupdel %g
+
+
+#&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; Share Definitions &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+;[homes]
+;   comment &#x3D; Home Directories
+;   browseable &#x3D; no
+;   writable &#x3D; yes
+
+# Un-comment the following and create the netlogon directory for Domain Logons
+; [netlogon]
+;   comment &#x3D; Network Logon Service
+;   path &#x3D; &#x2F;usr&#x2F;local&#x2F;samba&#x2F;lib&#x2F;netlogon
+;   guest ok &#x3D; yes
+;   writable &#x3D; no
+;   share modes &#x3D; no
+
+
+# Un-comment the following to provide a specific roving profile share
+# the default is to use the user&#39;s home directory
+;[Profiles]
+;    path &#x3D; &#x2F;usr&#x2F;local&#x2F;samba&#x2F;profiles
+;    browseable &#x3D; no
+;    guest ok &#x3D; yes
+
+
+# NOTE: If you have a BSD-style print system there is no need to 
+# specifically define each individual printer
+[printers]
+   comment &#x3D; All Printers
+   path &#x3D; &#x2F;usr&#x2F;spool&#x2F;samba
+   browseable &#x3D; no
+# Set public &#x3D; yes to allow user &#39;guest account&#39; to print
+   guest ok &#x3D; no
+   writable &#x3D; no
+   printable &#x3D; yes
+
+# This one is useful for people to share files
+;[tmp]
+;   comment &#x3D; Temporary file space
+;   path &#x3D; &#x2F;tmp
+;   read only &#x3D; no
+;   public &#x3D; yes
+
+# A publicly accessible directory, but read only, except for people in
+# the &quot;staff&quot; group
+;[public]
+;   comment &#x3D; Public Stuff
+;   path &#x3D; &#x2F;home&#x2F;samba
+;   public &#x3D; yes
+;   writable &#x3D; no
+;   printable &#x3D; no
+;   write list &#x3D; @staff
+
+# Other examples. 
+#
+# A private printer, usable only by fred. Spool data will be placed in fred&#39;s
+# home directory. Note that fred must have write access to the spool directory,
+# wherever it is.
+;[fredsprn]
+;   comment &#x3D; Fred&#39;s Printer
+;   valid users &#x3D; fred
+;   path &#x3D; &#x2F;homes&#x2F;fred
+;   printer &#x3D; freds_printer
+;   public &#x3D; no
+;   writable &#x3D; no
+;   printable &#x3D; yes
+
+# A private directory, usable only by fred. Note that fred requires write
+# access to the directory.
+;[fredsdir]
+;   comment &#x3D; Fred&#39;s Service
+;   path &#x3D; &#x2F;usr&#x2F;somewhere&#x2F;private
+;   valid users &#x3D; fred
+;   public &#x3D; no
+;   writable &#x3D; yes
+;   printable &#x3D; no
+
+# a service which has a different directory for each machine that connects
+# this allows you to tailor configurations to incoming machines. You could
+# also use the %U option to tailor it by user name.
+# The %m gets replaced with the machine name that is connecting.
+;[pchome]
+;  comment &#x3D; PC Directories
+;  path &#x3D; &#x2F;usr&#x2F;pc&#x2F;%m
+;  public &#x3D; no
+;  writable &#x3D; yes
+
+# A publicly accessible directory, read&#x2F;write to all users. Note that all files
+# created in the directory by users will be owned by the default user, so
+# any user with access can delete any other user&#39;s files. Obviously this
+# directory must be writable by the default user. Another user could of course
+# be specified, in which case all files would be owned by that user instead.
+;[public]
+;   path &#x3D; &#x2F;usr&#x2F;somewhere&#x2F;else&#x2F;public
+;   public &#x3D; yes
+;   only guest &#x3D; yes
+;   writable &#x3D; yes
+;   printable &#x3D; no
+
+# The following two entries demonstrate how to share a directory so that two
+# users can place files there that will be owned by the specific users. In this
+# setup, the directory should be writable by both users and should have the
+# sticky bit set on it to prevent abuse. Obviously this could be extended to
+# as many users as required.
+;[myshare]
+;   comment &#x3D; Mary&#39;s and Fred&#39;s stuff
+;   path &#x3D; &#x2F;usr&#x2F;somewhere&#x2F;shared
+;   valid users &#x3D; mary fred
+;   public &#x3D; no
+;   writable &#x3D; yes
+;   printable &#x3D; no
+;   create mask &#x3D; 0765
+
+
+[mSHARE]
+        comment &#x3D; Test
+        path &#x3D; &#x2F;run&#x2F;media&#x2F;bing&#x2F;storagedisk&#x2F;mine_share&#x2F;	
+	public &#x3D; yes
+	valid users &#x3D; bing
+        writeable &#x3D; yes 
+        browseable &#x3D; yes 
+	create mask &#x3D; 0777
+   	directory mask &#x3D; 0777
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="../../../../about" rel="external nofollow noreferrer">ROOT</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz">https://blog.bingfengs.xyz</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="../../../../about" target="_blank">ROOT</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="../../../../tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">笔记</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="../../../../libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="../../../../libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+        <div class="disqus-card card" data-aos="fade-up">
+    <div id="disqus_thread" class="card-content">
+        <noscript>Please enable JavaScript to view the
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+    </div>
+</div>
+
+<script type="text/javascript">
+    disqus_config = function () {
+        this.page.url = 'https://blog.bingfengs.xyz/2020/10/08/samba/';
+        this.page.identifier = '';
+        this.page.title = 'Samba';
+    };
+    let disqus_shortname = 'bingfeng';
+
+    (function () { // DON'T EDIT BELOW THIS LINE
+        let d = document, s = d.createElement('script');
+        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="../../16/you-xiu-de-ge-ren-bo-ke-ji-wang-zhan-shou-cang/">
+                    <div class="card-image">
+                        
+                        <img src="../../../../medias/featureimages/36.jpg" class="responsive-img" alt="优秀的个人博客及网站">
+                        
+                        <span class="card-title">优秀的个人博客及网站</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            精挑细选的收藏已久的好东西 ฅ^ω^ฅ
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/%E7%BD%91%E7%AB%99/">
+                        <span class="chip bg-color">网站</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="../../../06/13/onenote-tao-chi-2/">
+                    <div class="card-image">
+                        
+                        <img src="../../../../medias/featureimages/35.jpg" class="responsive-img" alt="OneNote逃离2">
+                        
+                        <span class="card-title">OneNote逃离2</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Linux 篇
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="../../../../libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="../../../../libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            |&nbsp;Administrated by&nbsp;
+            <a href="../../../../about" target="_blank">ROOT</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+                <span id="icp"><img src="../../../../medias/icp.png"
+                                    style="vertical-align: text-bottom;"/>
+                <a href="../../../../https:/sekai.bingfengs.xyz:8443" target="_blank">备案，不存在的！</a>
+            </span>
+            
+            <br>
+            <br>
+            <span>苔痕上階綠，草色入簾青。談笑有鴻儒，往來無白丁。<br>
+                可以調素琴，閱金經。無絲竹之亂耳，無案牘之勞形。</span>
+            <br>
+            <br>
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('../../../../search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="../../../../libs/materialize/materialize.min.js"></script>
+    <script src="../../../../libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="../../../../libs/aos/aos.js"></script>
+    <script src="../../../../libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="../../../../libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="../../../../js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="../../../../libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="../../../../libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="../../../../libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="../../../../libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,1185 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="批处理笔记, 宅世界">
+    <meta name="description" content="记录一下批处理的一些知识点,方便后续查看">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8Z4B2QXXNF"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-8Z4B2QXXNF');
+</script>
+
+
+    <title>批处理笔记 | 宅世界</title>
+    <link rel="icon" type="image/png" href="../../../../favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../../../../libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../css/matery.css">
+    <link rel="stylesheet" type="text/css" href="../../../../css/my.css">
+
+    <script src="../../../../libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+   <style>
+    body{
+       background-image: url(/medias/1.png);
+       background-repeat:no-repeat;
+       background-size: 100% 100%;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="../../../../index.html" class="waves-effect waves-light">
+                    
+                    <img src="../../../../medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">宅世界</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../Other/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-vial" style="zoom: 0.6;"></i>
+      
+      <span>Lab</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="../../../../https:/sekai.bingfengs.xyz:8443" class="waves-effect waves-light">
+      
+      <i class="fas fa-globe" style="zoom: 0.6;"></i>
+      
+      <span>Sekai</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="../../../../medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">宅世界</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../Other/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-vial"></i>
+			
+			Lab
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="../../../../https:/sekai.bingfengs.xyz:8443" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-globe"></i>
+			
+			Sekai
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('../../../../medias/featureimages/24.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">批处理笔记</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="../../../../libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="../../../../tags/Windows/">
+                                <span class="chip bg-color">Windows</span>
+                            </a>
+                        
+                            <a href="../../../../tags/%E7%BC%96%E7%A8%8B/">
+                                <span class="chip bg-color">编程</span>
+                            </a>
+                        
+                            <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">笔记</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2019-10-15
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-04-24
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    1.7k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="../../../../libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="用运行打开程序"><a href="#用运行打开程序" class="headerlink" title="用运行打开程序"></a>用<code>运行</code>打开程序</h2><ul>
+<li>calc : 打开计算器</li>
+<li>appwiz.cpl : 程序和功能</li>
+<li>certmgr.msc : 证书管理工具</li>
+<li>cleanmgr : 磁盘清理工具</li>
+<li>colorcpl : 颜色管理</li>
+<li>compmgmt.msc : 计算机管理</li>
+<li>control : 控制面板</li>
+<li>devmgmt.msc : 设备管理器</li>
+<li>desk.cpl : 显示控制选项</li>
+<li>diskmgmt.msc : 磁盘管理</li>
+<li>eventvwr : 事件查看器</li>
+<li>explorer : 打开资源管理器</li>
+<li>firewall.cpl : windows防火墙</li>
+<li>gpedit.msc : 组策略</li>
+<li>fsmgmt.msc : 共享文件夹管理器</li>
+<li>hdwwiz.cpl : 设备管理器</li>
+<li>inetcpl.cpl : Internet 属性</li>
+<li>intl.cpl : 区域时间设置</li>
+<li>iexpress : 程序打包软件</li>
+<li>logoff :  注销</li>
+<li>lusrmgr.msc : 本机用户和组</li>
+<li>mmsys.cpl : 声音</li>
+<li>magnify : 放大镜实用程序</li>
+<li>mdsched : Windows内存诊断程序(需要重启电脑)</li>
+<li>mmc : 打开控制台</li>
+<li>msinfo32 : 系统信息</li>
+<li>ncpa.cpl : 网络连接</li>
+<li>netplwiz : 高级用户账户控制面板</li>
+<li>optionalfeatures : 打开或关闭Windows功能</li>
+<li>osk : 屏幕键盘</li>
+<li>perfmon.msc : 计算机性能监视器</li>
+<li>powercfg.cpl : 电源选项</li>
+<li>psr : 问题步骤记录器</li>
+<li>resmon : 资源监视器</li>
+<li>sigverif : 文件签名验证程序</li>
+<li>slui : windows激活信息</li>
+<li>slmgr.vbs -dlv : 显示详细的许可证信息</li>
+<li>snippingtool : 截图工具</li>
+<li>taskschd.msc  : 任务计划程序</li>
+<li>timedate.cpl : 日期和时间</li>
+<li>wf.msc : 高级安全Windows防火墙</li>
+<li>winver : 关于Windows</li>
+<li>taskschd.msc : 计划任务</li>
+</ul>
+<h2 id="命令行语法项"><a href="#命令行语法项" class="headerlink" title="命令行语法项"></a>命令行语法项</h2><table>
+<thead>
+<tr>
+<th>图解</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>不带方括号或大括号的文本</td>
+<td>必须按如下所示键入项</td>
+</tr>
+<tr>
+<td>&lt;尖括号内的文本&gt;</td>
+<td>必须为其提供值的占位符</td>
+</tr>
+<tr>
+<td>[方括号内的文本]</td>
+<td>可选项</td>
+</tr>
+<tr>
+<td>{大括号内的文本}</td>
+<td>一组必需的项,选择其中一个</td>
+</tr>
+<tr>
+<td>竖线</td>
+<td>互斥项的分隔符,选择其中一个</td>
+</tr>
+<tr>
+<td>省略号(…)</td>
+<td>可以重复的项</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>详情参见</td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/command-line-syntax-key">https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/command-line-syntax-key</a></p>
+</blockquote>
+<h2 id="常用DOS命令"><a href="#常用DOS命令" class="headerlink" title="常用DOS命令"></a>常用DOS命令</h2><ul>
+<li>tree 以图形显示驱动器或路径的文件夹结构</li>
+<li>rd 删除一个目录</li>
+<li>md 创建目录</li>
+<li>xcopy 复制文件和目录树</li>
+<li>ren 重命名文件</li>
+<li>replace 替换文件</li>
+<li>find 搜索字符串</li>
+<li>attrib 显示或更改文件属性</li>
+<li>fc 比较两个文件或两个文件集并显示它们之间的不同</li>
+<li>at 安排在特定日期和时间运行命令和程序</li>
+<li>taskkill 结束进程</li>
+<li>tasklist 显示进程列表</li>
+<li>cls 清屏</li>
+<li>type  显示文件内容</li>
+<li>pause 暂停命令</li>
+<li>rem 和 :    注释命令</li>
+<li>more 逐屏显示</li>
+<li>tree 显示目录结构</li>
+<li>&amp;  顺序执行多条命令，而不管命令是否执行成功</li>
+<li>&amp;&amp;  顺序执行多条命令，当碰到执行出错的命令后将不执行后面的命令</li>
+<li>||  顺序执行多条命令，当碰到执行正确的命令后将不执行后面的命令 </li>
+<li>| 管道命令</li>
+<li>set  设置变量 (引用变量可以在名字前后加%, 即 %变量名%</li>
+<li>^ 转义符</li>
+<li>copy<br> copy 1.txt + 2.txt  3.txt<br> 合并 1.txt 和 2.txt 的内容，保存为 3.txt 文件 如果不指定 3.txt ，则保存到 1.txt</li>
+</ul>
+<p>con 代表屏幕 , prn 代表打印机 , nul 代表空设备</p>
+<h2 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h2><p>“关闭回显”是指运行批处理文件时，不显示文件里的每条命令，只显示运行结果.批处理开始和结束时，系统都会自动打开回显</p>
+<pre class="line-numbers language-none"><code class="language-none">@                    #关闭单行回显
+echo off             #从下一行开始关闭回显
+@echo off            #从本行开始关闭回显。一般批处理第一行都是这个
+echo on              #从下一行开始打开回显
+echo                 #显示当前是 echo off 状态还是 echo on 状态
+echo.                #输出一个&quot;回车换行&quot;，一般就是指空白行
+echo hello world     #输出hello world<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>echo %errorlevel% : 每个命令运行结束,可以用这个查看命令是否执行成功,默认为0.一般执行出错会返回 1.</p>
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><pre class="line-numbers language-none"><code class="language-none">set                    #显示目前所有可用的变量，包括系统变量和自定义的变量
+echo %SystemDrive%     #显示系统盘盘符。系统变量可以直接引用
+set p                  #显示所有以p开头的变量，要是一个也没有就设errorlevel&#x3D;1
+set p&#x3D;aa1bb1aa2bb2     #设置变量p，并赋值为 &#x3D; 后面的字符串，即aa1bb1aa2bb2
+echo %p%               #显示变量p代表的字符串，即aa1bb1aa2bb2
+echo %p:~6%            #显示变量p中第6个字符以后的所有字符，即aa2bb2
+echo %p:~6,3%          #显示第6个字符以后的3个字符，即aa2
+echo %p:~0,3%          #显示前3个字符，即aa1
+echo %p:~-2%           #显示最后面的2个字符，即b2
+echo %p:~0,-2%         #显示除了最后2个字符以外的其它字符，即aa1bb1aa2b
+echo %p:aa&#x3D;c%          #用c替换变量p中所有的aa，即显示c1bb1c2bb2
+echo %p:aa&#x3D;%           #将变量p中的所有aa字符串置换为空，即显示1bb12bb2
+echo %p:*bb&#x3D;c%         #第一个bb及其之前的所有字符被替换为c，即显示c1aa2bb2
+set p&#x3D;%p:*bb&#x3D;c%        #设置变量p，赋值为 %p:*bb&#x3D;c% ，即c1aa2bb2
+set &#x2F;a p&#x3D;39            #设置p为数值型变量，值为39
+set &#x2F;a p&#x3D;39&#x2F;10         #支持运算符，有小数时用去尾法，39&#x2F;10&#x3D;3.9，去尾得3，p&#x3D;3set &#x2F;a p&#x3D;p&#x2F;10
+						#用 &#x2F;a 参数时，在 &#x3D; 后面的变量可以不加%直接引用set &#x2F;a p&#x3D;&quot;1&amp;0&quot;
+						#&quot;与&quot;运算，要加引号。其它支持的运算符参见set&#x2F;?
+set p&#x3D;                 #取消p变量
+set &#x2F;p p&#x3D;              请输入屏幕上显示&quot;请输入&quot;，并会将输入的字符串赋值给变量p注意这条可以用来取代 choice 命令<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://xstarcd.github.io/wiki/windows/windows_cmd_summary_commands.html">http://xstarcd.github.io/wiki/windows/windows_cmd_summary_commands.html</a></p>
+</blockquote>
+<h2 id="xcopy"><a href="#xcopy" class="headerlink" title="xcopy"></a>xcopy</h2><h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><pre class="line-numbers language-none"><code class="language-none">xcopy \\raspberrypi\pishare\test d:\xcopytest2\test2\<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>如果复制到目的位置的文件夹不存在, xcopy会自动创建,多级目录也一样</strong><br>(例如上面的,<code>d:\xcopytest2\test2\</code> . 如果这个文件夹不存在,则会创建)</p>
+<p><strong>默认复制源头文件夹下面的文件,而不是整个文件夹</strong><br>(例如上面的,<code>\\raspberrypi\pishare\test</code>. 会copy <code>test</code> 文件夹下面的文件, 而不是 <code>test</code> 这个文件夹)</p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><pre class="line-numbers language-none"><code class="language-none">&#x2F;i
+如果“Source”是一个目录或包含通配符，而“Destination”不存在，“xcopy”会假定“destination”指定目录名并创建一个新目录。然后，“xcopy”会将所有指定文件复制到新目录中。默认情况下，“xcopy”将提示您指定“Destination”是文件还是目录。
+
+&#x2F;s
+复制非空的目录和子目录。如果省略“&#x2F;s”，则“xcopy”将在单个目录中工作。
+
+&#x2F;e
+复制所有子目录，包括空目录。将“&#x2F;e”与“&#x2F;s”和“&#x2F;t”命令行选项一起使用。
+
+&#x2F;t
+只复制子目录结构（即目录树），不复制文件。要复制空目录，必须包含“&#x2F;e”命令行选项。
+
+&#x2F;y
+禁止提示确认要覆盖已存在的目标文件。
+
+&#x2F;-y
+提示您确认要覆盖已存在的目标文件。
+
+&#x2F;cdehikvy
+常用的参数组合,能增量,断点续传
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="../../../../about" rel="external nofollow noreferrer">ROOT</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.bingfengs.xyz">https://blog.bingfengs.xyz</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="../../../../about" target="_blank">ROOT</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="../../../../tags/Windows/">
+                                    <span class="chip bg-color">Windows</span>
+                                </a>
+                            
+                                <a href="../../../../tags/%E7%BC%96%E7%A8%8B/">
+                                    <span class="chip bg-color">编程</span>
+                                </a>
+                            
+                                <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">笔记</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="../../../../libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="../../../../libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+        <div class="disqus-card card" data-aos="fade-up">
+    <div id="disqus_thread" class="card-content">
+        <noscript>Please enable JavaScript to view the
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+    </div>
+</div>
+
+<script type="text/javascript">
+    disqus_config = function () {
+        this.page.url = 'https://blog.bingfengs.xyz/2019/10/15/pi-chu-li/';
+        this.page.identifier = '';
+        this.page.title = '批处理笔记';
+    };
+    let disqus_shortname = 'bingfeng';
+
+    (function () { // DON'T EDIT BELOW THIS LINE
+        let d = document, s = d.createElement('script');
+        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="../vbs-ru-men/">
+                    <div class="card-image">
+                        
+                        <img src="../../../../medias/featureimages/18.jpg" class="responsive-img" alt="VBS 入门">
+                        
+                        <span class="card-title">VBS 入门</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一些基本的语法，进阶可以看本博客的 "VBS 实战"
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-15
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/Windows/">
+                        <span class="chip bg-color">Windows</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">编程</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="../sysinternals-gong-ju-xi-lie/">
+                    <div class="card-image">
+                        
+                        <img src="../../../../medias/featureimages/16.jpg" class="responsive-img" alt="SysInternals 工具系列">
+                        
+                        <span class="card-title">SysInternals 工具系列</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            微软的系统工具(sysinternals)使用介绍,着重 psexec
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ROOT
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/Windows/">
+                        <span class="chip bg-color">Windows</span>
+                    </a>
+                    
+                    <a href="../../../../tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="../../../../libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="../../../../libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="../../../../libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            |&nbsp;Administrated by&nbsp;
+            <a href="../../../../about" target="_blank">ROOT</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+                <span id="icp"><img src="../../../../medias/icp.png"
+                                    style="vertical-align: text-bottom;"/>
+                <a href="../../../../https:/sekai.bingfengs.xyz:8443" target="_blank">备案，不存在的！</a>
+            </span>
+            
+            <br>
+            <br>
+            <span>苔痕上階綠，草色入簾青。談笑有鴻儒，往來無白丁。<br>
+                可以調素琴，閱金經。無絲竹之亂耳，無案牘之勞形。</span>
+            <br>
+            <br>
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('../../../../search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="../../../../libs/materialize/materialize.min.js"></script>
+    <script src="../../../../libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="../../../../libs/aos/aos.js"></script>
+    <script src="../../../../libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="../../../../libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="../../../../js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="../../../../libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="../../../../libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="../../../../libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="../../../../libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
